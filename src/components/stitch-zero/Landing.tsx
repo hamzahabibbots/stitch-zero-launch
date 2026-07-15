@@ -88,15 +88,15 @@ function Nav() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
     <section
       id="top"
       ref={ref}
-      className="relative min-h-[100svh] w-full overflow-hidden pt-32 pb-20 flex items-center bg-white"
+      className="relative min-h-[100svh] w-full overflow-hidden pt-36 pb-20 flex items-center bg-white"
     >
       {/* Background Image Backdrop */}
       <motion.div
@@ -114,95 +114,80 @@ function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,transparent,white_80%)]" />
       </motion.div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 grid gap-12 lg:grid-cols-2 items-center">
-        {/* Left Column: Title, Buttons, Ticker */}
-        <div className="flex flex-col gap-6 md:text-left text-center">
-          <motion.h1
-            className="font-display text-[clamp(2.4rem,5vw,4.2rem)] text-ink leading-[1.05]"
-          >
-            {["Transforming Textile Waste", "Into the Next Generation of", "Sustainable Materials."].map((line, i) => (
-              <motion.span
-                key={i}
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3 + i * 0.1, duration: 0.9, ease: EASE }}
-                className="block overflow-hidden"
-              >
-                <span className={`inline-block ${i === 2 ? "text-copper" : ""}`}>
-                  {line}
-                </span>
-              </motion.span>
-            ))}
-          </motion.h1>
-
-          {/* Action Buttons: Moved Up directly below Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8, ease: EASE }}
-            className="flex flex-wrap items-center justify-center gap-4 md:justify-start mt-2"
-          >
-            <a
-              href="#contact"
-              className="group relative overflow-hidden rounded-full bg-[#5E1930] px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(94,25,48,0.3)]"
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 flex flex-col gap-8 md:text-left text-center">
+        <motion.h1
+          className="font-display text-[clamp(2.8rem,7vw,6.5rem)] text-ink leading-[1.05]"
+        >
+          {["Transforming Textile Waste", "Into the Next Generation of", "Sustainable Materials."].map((line, i) => (
+            <motion.span
+              key={i}
+              initial={{ y: "100%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 + i * 0.1, duration: 0.9, ease: EASE }}
+              className="block overflow-hidden"
             >
-              Partner with Stitch Zero
-            </a>
-            <a
-              href="#solution"
-              className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink transition hover:text-copper"
-            >
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 transition group-hover:border-copper">
-                ↓
+              <span className={`inline-block ${i === 2 ? "text-copper" : ""}`}>
+                {line}
               </span>
-              Explore Our Solution
-            </a>
-          </motion.div>
+            </motion.span>
+          ))}
+        </motion.h1>
 
-          {/* Ticker */}
-          <div className="mt-12 grid grid-cols-2 gap-8 border-t border-black/5 pt-8 text-center md:grid-cols-4 md:text-left">
-            {[
-              ["7.8M", "tonnes waste / yr (India)"],
-              ["$3.15B", "retail display segment (2024)"],
-              ["100%", "biodegradable composite"],
-              ["25+", "national recognitions"],
-            ].map(([k, v], i) => (
-              <motion.div
-                key={k}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 + i * 0.08, duration: 0.7, ease: EASE }}
-              >
-                <div className="font-display text-3xl text-ink">{k}</div>
-                <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground">
-                  {v}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8, ease: EASE }}
+          className="mx-auto max-w-2xl text-balance text-lg text-muted-foreground md:mx-0 md:text-xl leading-relaxed"
+        >
+          Stitch Zero is a circular materials company converting discarded textile waste into
+          high-performance, biodegradable alternatives to plastic. We're starting with
+          retail mannequins, and building toward a future where industrial waste, not virgin resources,
+          becomes the raw material of modern manufacturing.
+        </motion.p>
 
-        {/* Right Column: 3D Mannequin Viewport & Description Paragraph */}
-        <div className="flex flex-col gap-6 items-center lg:items-start w-full">
-          <motion.div
-            style={{ y, scale, opacity }}
-            className="relative w-full h-[320px] sm:h-[400px] lg:h-[450px] flex items-center justify-center overflow-hidden"
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8, ease: EASE }}
+          className="flex flex-wrap items-center justify-center gap-4 md:justify-start"
+        >
+          <a
+            href="#contact"
+            className="group relative overflow-hidden rounded-full bg-[#5E1930] px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(94,25,48,0.3)]"
           >
-            <ThreeMannequin />
-          </motion.div>
-
-          {/* Description Paragraph: Moved Right directly below the 3D Viewport */}
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: EASE }}
-            className="mx-auto max-w-xl text-balance text-sm lg:text-base text-muted-foreground md:mx-0 leading-relaxed text-center lg:text-left border-l-2 border-[#5E1930]/20 pl-4"
+            Partner with Stitch Zero
+          </a>
+          <a
+            href="#solution"
+            className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink transition hover:text-copper"
           >
-            Stitch Zero is a circular materials company converting discarded textile waste into
-            high-performance, biodegradable alternatives to plastic. We're starting with
-            retail mannequins, and building toward a future where industrial waste, not virgin resources,
-            becomes the raw material of modern manufacturing.
-          </motion.p>
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 transition group-hover:border-copper">
+              ↓
+            </span>
+            Explore Our Solution
+          </a>
+        </motion.div>
+
+        {/* Ticker */}
+        <div className="mt-12 grid grid-cols-2 gap-8 border-t border-black/5 pt-8 text-center md:grid-cols-4 md:text-left">
+          {[
+            ["7.8M", "tonnes waste / yr (India)"],
+            ["$3.15B", "retail display segment (2024)"],
+            ["100%", "biodegradable composite"],
+            ["25+", "national recognitions"],
+          ].map(([k, v], i) => (
+            <motion.div
+              key={k}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2 + i * 0.08, duration: 0.7, ease: EASE }}
+            >
+              <div className="font-display text-3xl text-ink">{k}</div>
+              <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground">
+                {v}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
