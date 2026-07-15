@@ -235,5 +235,31 @@
 
 /* Section alternating backgrounds */
 @utility section-alt {
-  background: oklch(0.98 0.003 80);
+  background: oklch(0.985 0.003 80);
+}
+
+/* Premium Navigation Hover Underline Effect */
+@utility nav-link {
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--copper);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover {
+    color: var(--foreground);
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
 }
