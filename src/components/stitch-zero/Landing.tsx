@@ -26,7 +26,7 @@ function Loader({ onDone }: { onDone: () => void }) {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: EASE }}
         >
-          <Logo className="h-16" variant="dark-text" />
+          <Logo className="h-20 md:h-24" variant="dark-text" />
         </motion.div>
         <div className="h-[2px] w-20 overflow-hidden bg-black/5 rounded">
           <motion.div 
@@ -61,7 +61,7 @@ function Nav() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
         <a href="#top" className="transition-opacity hover:opacity-90">
-          <Logo className="h-10" variant="dark-text" />
+          <Logo className="h-12 md:h-16" variant="dark-text" />
         </a>
         
         <nav className="hidden items-center gap-8 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:flex">
@@ -897,7 +897,7 @@ function Footer() {
     <footer className="border-t border-black/5 py-12 bg-bone/30">
       <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-8 px-6 md:flex-row md:items-center md:px-10">
         <div>
-          <Logo className="h-10" variant="dark-text" />
+          <Logo className="h-12 md:h-16" variant="dark-text" />
         </div>
         <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
           © {new Date().getFullYear()} Stitch Zero. Circular Materials Company.
