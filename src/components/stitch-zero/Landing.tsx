@@ -385,13 +385,13 @@ function PanelCard({ img, eyebrow, stat, statLabel, body }: { img: string; eyebr
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
       </div>
-      <div className="relative -mt-24 p-8 md:p-10">
+      <div className="relative -mt-24 p-8 text-center md:p-10 md:text-left">
         <div className="font-mono text-[10px] uppercase tracking-[0.35em] text-copper">{eyebrow}</div>
-        <div className="mt-6 flex items-baseline gap-4">
+        <div className="mt-6 flex items-baseline justify-center gap-4 md:justify-start">
           <span className="font-display text-6xl md:text-7xl">{stat}</span>
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{statLabel}</span>
         </div>
-        <p className="mt-6 max-w-md text-muted-foreground">{body}</p>
+        <p className="mx-auto mt-6 max-w-md text-muted-foreground md:mx-0">{body}</p>
       </div>
     </motion.article>
   );
@@ -437,11 +437,11 @@ function Process() {
                 transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }}
                 className="relative"
               >
-                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full glass">
+                <div className="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full glass md:mx-0">
                   <span className="font-mono text-xs text-copper">0{i + 1}</span>
                 </div>
-                <div className="mt-6 font-display text-2xl">{s.k}</div>
-                <p className="mt-2 text-sm text-muted-foreground">{s.v}</p>
+                <div className="mt-6 text-center font-display text-2xl md:text-left">{s.k}</div>
+                <p className="mt-2 text-center text-sm text-muted-foreground md:text-left">{s.v}</p>
               </motion.li>
             ))}
           </ol>
@@ -550,7 +550,7 @@ function Compare() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15%" }}
               transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }}
-              className="grid grid-cols-1 gap-3 rounded-3xl border border-border/60 p-6 md:grid-cols-[1fr_auto_1fr] md:gap-8 md:p-8"
+              className="grid grid-cols-1 gap-3 rounded-3xl border border-border/60 p-6 text-center md:grid-cols-[1fr_auto_1fr] md:gap-8 md:p-8 md:text-left"
             >
               <div className="opacity-50">
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{r.l}</div>
@@ -617,7 +617,7 @@ function Market() {
                 <Counter to={it.n} />
                 <span className="text-copper">{it.s}</span>
               </div>
-              <div className="mt-6 max-w-xs text-sm text-muted-foreground">{it.label}</div>
+              <div className="mx-auto mt-6 max-w-xs text-center text-sm text-muted-foreground md:mx-0 md:text-left">{it.label}</div>
             </motion.div>
           ))}
         </div>
@@ -645,7 +645,7 @@ function Impact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.1, ease: EASE }}
-                className="glass relative rounded-2xl p-6 transition hover:-translate-y-1 hover:border-copper/40"
+                className="glass relative rounded-2xl p-6 text-center transition hover:-translate-y-1 hover:border-copper/40 md:text-left"
               >
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-copper">0{i + 1}</div>
                 <div className="mt-4 font-display text-xl">{n}</div>
@@ -721,7 +721,7 @@ function Recognition() {
               transition={{ duration: 0.9, delay: i * 0.08, ease: EASE }}
               whileHover={{ y: -6, rotateY: 4, rotateX: -3 }}
               style={{ transformPerspective: 1000 }}
-              className="glass rounded-3xl p-8"
+              className="glass rounded-3xl p-8 text-center md:text-left"
             >
               <div className="font-display text-2xl leading-tight">{c.t}</div>
               <div className="mt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{c.s}</div>
@@ -754,7 +754,7 @@ function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: i * 0.12, ease: EASE }}
-              className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card p-10"
+              className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card p-10 text-center md:text-left"
             >
               <div className="absolute inset-0 bg-[radial-gradient(400px_circle_at_var(--mx,50%)_var(--my,50%),color-mix(in_oklch,var(--copper)_18%,transparent),transparent_70%)] opacity-0 transition-opacity group-hover:opacity-100" />
               <div className="relative">
