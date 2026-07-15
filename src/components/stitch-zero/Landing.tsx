@@ -336,7 +336,7 @@ function Problem() {
     <section id="problem" className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="01" label="The Problem" />
-        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left [className="mt-8 max-w-4xl font-display]:font-display text-[clamp(2.4rem,6vw,6rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.4rem,6vw,6rem)] font-[300] text-balance">
           Two industries. <span className="text-copper italic">One waste problem.</span>{" "}
           <span className="opacity-60">Zero real solution.</span>
         </h2>
@@ -422,7 +422,7 @@ function Process() {
     <section id="platform" className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="02" label="How it works" />
-        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left [className="mt-8 max-w-4xl font-display]:font-display text-[clamp(2.4rem,6vw,6rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.4rem,6vw,6rem)] font-[300] text-balance">
           One industry's waste, becomes another's <span className="italic text-copper">infrastructure.</span>
         </h2>
         <div className="mt-24 relative">
@@ -460,11 +460,11 @@ function Platform() {
         <SectionLabel n="03" label="Material Platform" />
         <div className="mt-8 grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
-            <h2 className="font-display text-[clamp(2.4rem,6vw,5.5rem)] font-[300] text-balance">
+            <h2 className="mx-auto text-center font-display text-[clamp(2.4rem,6vw,5.5rem)] font-[300] text-balance md:mx-0 md:text-left">
               We're not building <span className="italic opacity-60">a product.</span>{" "}
               We're building a <span className="text-copper">materials platform.</span>
             </h2>
-            <p className="mt-8 max-w-lg text-muted-foreground">
+            <p className="mx-auto mt-8 max-w-lg text-center text-muted-foreground md:mx-0 md:text-left">
               Most textile recycling downcycles waste into lower-value products.
               We do the opposite — a high-value composite whose structural,
               mechanical, and aesthetic properties can be tuned across
@@ -539,7 +539,7 @@ function Compare() {
     <section className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="04" label="Why we're different" />
-        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left [className="mt-8 max-w-4xl font-display]:font-display text-[clamp(2.4rem,6vw,5.5rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.4rem,6vw,5.5rem)] font-[300] text-balance">
           The only approach tackling textile waste and plastic dependency as <span className="italic text-copper">one problem.</span>
         </h2>
         <div className="mt-16 space-y-3">
@@ -633,7 +633,7 @@ function Impact() {
     <section className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="06" label="Impact ecosystem" />
-        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left [className="mt-8 max-w-4xl font-display]:font-display text-[clamp(2.4rem,6vw,5rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.4rem,6vw,5rem)] font-[300] text-balance">
           Every mannequin cascades into a wider <span className="italic text-copper">systemic effect.</span>
         </h2>
         <div className="mt-20 relative">
@@ -743,7 +743,7 @@ function Team() {
     <section id="team" className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="09" label="The Team" />
-        <h2 className="mt-8 max-w-3xl font-display text-[clamp(2.2rem,5vw,4.5rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-3xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,4.5rem)] font-[300] text-balance">
           Founded by two undergraduates at SRCC, University of Delhi. Building a materials company from <span className="italic text-copper">Coimbatore</span> — the Manchester of South India.
         </h2>
         <div className="mt-16 grid gap-8 md:grid-cols-2">
