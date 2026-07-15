@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
+import ThreeMannequin from "./ThreeMannequin";
 import heroImg from "@/assets/hero-mannequin.jpg";
 import wasteImg from "@/assets/waste.jpg";
 import materialImg from "@/assets/material.jpg";
@@ -99,20 +100,14 @@ function Hero() {
     >
       <motion.div
         style={{ y, scale, opacity }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 lg:left-1/2 lg:w-1/2 w-full h-full"
       >
-        <img
-          src={heroImg}
-          alt="Sculptural biodegradable mannequin"
-          className="h-full w-full object-cover"
-          width={1280}
-          height={1600}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/50 to-white" />
-        <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_40%,transparent,white_90%)]" />
+        <ThreeMannequin />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white" />
+        <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_40%,transparent,white_90%)] lg:hidden" />
       </motion.div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 flex flex-col gap-6 md:text-left text-center">
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 flex flex-col gap-6 md:text-left text-center lg:pr-[45%]">
         <motion.h1
           className="font-display text-[clamp(2.8rem,7vw,6rem)] text-ink leading-[1.05]"
         >
