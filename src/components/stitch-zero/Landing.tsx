@@ -400,7 +400,7 @@ function PanelCard({ img, eyebrow, stat, statLabel, body }: { img: string; eyebr
 /* -------- Section label helper -------- */
 function SectionLabel({ n, label }: { n: string; label: string }) {
   return (
-    <div className="flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
+    <div className="flex items-center justify-center gap-4 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground md:justify-start">
       <span className="text-copper">{n}</span>
       <span className="hairline w-16" />
       <span>{label}</span>
