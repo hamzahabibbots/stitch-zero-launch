@@ -65,6 +65,7 @@ export default function ThreeMannequin() {
     });
     
     const torsoMesh = new THREE.Mesh(latheGeometry, baseMaterial);
+    torsoMesh.scale.set(1.35, 1.0, 0.65); // Elliptical cross section for realistic human proportions (not perfectly round/cylindrical)
     scene.add(torsoMesh);
 
     // Wireframe overlay (Thread network) - Made brighter and thicker for visibility
@@ -75,7 +76,7 @@ export default function ThreeMannequin() {
       opacity: 0.45, // Increased opacity from 0.25
     });
     const threadNetwork = new THREE.LineSegments(wireframeGeo, wireframeMat);
-    threadNetwork.scale.set(1.01, 1.01, 1.01);
+    threadNetwork.scale.set(1.36, 1.01, 0.66); // Slightly larger to match torso scale and prevent z-fighting
     scene.add(threadNetwork);
 
     // --- Standing Pole Base ---
