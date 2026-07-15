@@ -96,92 +96,94 @@ function Hero() {
     <section
       id="top"
       ref={ref}
-      className="relative min-h-[100svh] w-full overflow-hidden pt-36 pb-20 flex items-center"
+      className="relative min-h-[100svh] w-full pt-32 pb-20 flex items-center bg-white"
     >
-      <motion.div
-        style={{ y, scale, opacity }}
-        className="absolute inset-0 z-0 lg:left-1/2 lg:w-1/2 w-full h-full"
-      >
-        <ThreeMannequin />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white" />
-        <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_40%,transparent,white_90%)] lg:hidden" />
-      </motion.div>
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+        {/* Left Column: Text & CTAs & Ticker */}
+        <div className="flex flex-col gap-6 md:text-left text-center">
+          <motion.h1
+            className="font-display text-[clamp(2.8rem,7vw,5.5rem)] text-ink leading-[1.05]"
+          >
+            {["Transforming Textile Waste", "Into the Next Generation of", "Sustainable Materials."].map((line, i) => (
+              <motion.span
+                key={i}
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 + i * 0.1, duration: 0.9, ease: EASE }}
+                className="block overflow-hidden"
+              >
+                <span className={`inline-block ${i === 2 ? "text-copper" : ""}`}>
+                  {line}
+                </span>
+              </motion.span>
+            ))}
+          </motion.h1>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 flex flex-col gap-6 md:text-left text-center lg:pr-[45%]">
-        <motion.h1
-          className="font-display text-[clamp(2.8rem,7vw,6rem)] text-ink leading-[1.05]"
-        >
-          {["Transforming Textile Waste", "Into the Next Generation of", "Sustainable Materials."].map((line, i) => (
-            <motion.span
-              key={i}
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 + i * 0.1, duration: 0.9, ease: EASE }}
-              className="block overflow-hidden"
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8, ease: EASE }}
+            className="mx-auto max-w-2xl text-balance text-lg text-muted-foreground md:mx-0 md:text-xl leading-relaxed"
+          >
+            Stitch Zero is a circular materials company converting discarded textile waste into
+            high-performance, biodegradable alternatives to plastic. We're starting with
+            retail mannequins, and building toward a future where industrial waste, not virgin resources,
+            becomes the raw material of modern manufacturing.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8, ease: EASE }}
+            className="flex flex-wrap items-center justify-center gap-4 md:justify-start mt-4"
+          >
+            <a
+              href="#contact"
+              className="group relative overflow-hidden rounded-full bg-[#5E1930] px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(94,25,48,0.3)]"
             >
-              <span className={`inline-block ${i === 2 ? "text-copper" : ""}`}>
-                {line}
+              Partner with Stitch Zero
+            </a>
+            <a
+              href="#solution"
+              className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink transition hover:text-copper"
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 transition group-hover:border-copper">
+                ↓
               </span>
-            </motion.span>
-          ))}
-        </motion.h1>
+              Explore Our Solution
+            </a>
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8, ease: EASE }}
-          className="mx-auto max-w-2xl text-balance text-lg text-muted-foreground md:mx-0 md:text-xl leading-relaxed"
-        >
-          Stitch Zero is a circular materials company converting discarded textile waste into
-          high-performance, biodegradable alternatives to plastic. We're starting with
-          retail mannequins, and building toward a future where industrial waste, not virgin resources,
-          becomes the raw material of modern manufacturing.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8, ease: EASE }}
-          className="flex flex-wrap items-center justify-center gap-4 md:justify-start mt-4"
-        >
-          <a
-            href="#contact"
-            className="group relative overflow-hidden rounded-full bg-[#5E1930] px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(94,25,48,0.3)]"
-          >
-            Partner with Stitch Zero
-          </a>
-          <a
-            href="#solution"
-            className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-ink transition hover:text-copper"
-          >
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 transition group-hover:border-copper">
-              ↓
-            </span>
-            Explore Our Solution
-          </a>
-        </motion.div>
-
-        {/* Ticker - Minimal typography without boxes */}
-        <div className="mt-16 grid grid-cols-2 gap-8 border-t border-black/5 pt-8 text-center md:grid-cols-4 md:text-left">
-          {[
-            ["7.8M", "tonnes textile waste / yr in India"],
-            ["$3.15B", "retail display market (2024)"],
-            ["100%", "biodegradable composite"],
-            ["25+", "national recognitions"],
-          ].map(([k, v], i) => (
-            <motion.div
-              key={k}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 + i * 0.08, duration: 0.7, ease: EASE }}
-            >
-              <div className="font-display text-4xl text-ink">{k}</div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-                {v}
-              </div>
-            </motion.div>
-          ))}
+          {/* Ticker */}
+          <div className="mt-12 grid grid-cols-2 gap-8 border-t border-black/5 pt-8 text-center md:grid-cols-4 md:text-left">
+            {[
+              ["7.8M", "tonnes waste / yr (India)"],
+              ["$3.15B", "retail display segment (2024)"],
+              ["100%", "biodegradable composite"],
+              ["25+", "national recognitions"],
+            ].map(([k, v], i) => (
+              <motion.div
+                key={k}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2 + i * 0.08, duration: 0.7, ease: EASE }}
+              >
+                <div className="font-display text-3xl text-ink">{k}</div>
+                <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground">
+                  {v}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* Right Column: 3D Mannequin Viewport */}
+        <motion.div
+          style={{ y, scale, opacity }}
+          className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden"
+        >
+          <ThreeMannequin />
+        </motion.div>
       </div>
     </section>
   );

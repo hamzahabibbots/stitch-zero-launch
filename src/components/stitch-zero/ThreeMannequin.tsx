@@ -14,8 +14,8 @@ export default function ThreeMannequin() {
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.z = 8;
-    camera.position.y = 0.5;
+    camera.position.z = 7.5;
+    camera.position.y = 0.2;
 
     // --- Renderer Setup ---
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -23,44 +23,43 @@ export default function ThreeMannequin() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
-    // --- Create Mannequin Torso (Procedural Lathe) ---
-    // Create points defining the silhouette of a minimalist mannequin torso
+    // --- Create Mannequin Torso (Masculine Silhouette Lathe) ---
     const points: THREE.Vector2[] = [];
     
     // Neck base
-    points.push(new THREE.Vector2(0.35, 1.8));
-    points.push(new THREE.Vector2(0.4, 1.5));
+    points.push(new THREE.Vector2(0.38, 1.8));
+    points.push(new THREE.Vector2(0.42, 1.5));
     
-    // Shoulders expansion
-    points.push(new THREE.Vector2(0.7, 1.4));
-    points.push(new THREE.Vector2(1.15, 1.25));
-    points.push(new THREE.Vector2(1.2, 1.1));
+    // Broader Male Shoulders
+    points.push(new THREE.Vector2(0.8, 1.4));
+    points.push(new THREE.Vector2(1.35, 1.25));
+    points.push(new THREE.Vector2(1.4, 1.05));
     
-    // Bust/Chest curve
-    points.push(new THREE.Vector2(1.0, 0.6));
-    points.push(new THREE.Vector2(0.9, 0.2));
+    // Flat / Muscular Chest (no bust curve)
+    points.push(new THREE.Vector2(1.28, 0.6));
+    points.push(new THREE.Vector2(1.22, 0.2));
     
-    // Waist narrowing
-    points.push(new THREE.Vector2(0.7, -0.3));
-    points.push(new THREE.Vector2(0.65, -0.6));
+    // Straight / Slightly Tapered Waist (less curve than female)
+    points.push(new THREE.Vector2(1.05, -0.3));
+    points.push(new THREE.Vector2(1.0, -0.7));
     
-    // Hips expansion
-    points.push(new THREE.Vector2(0.85, -1.2));
-    points.push(new THREE.Vector2(0.95, -1.5));
+    // Male Hips / Base
+    points.push(new THREE.Vector2(1.12, -1.3));
+    points.push(new THREE.Vector2(1.18, -1.6));
     
-    // Base closing
-    points.push(new THREE.Vector2(0.6, -1.7));
-    points.push(new THREE.Vector2(0.0, -1.75));
+    // Closing
+    points.push(new THREE.Vector2(0.7, -1.75));
+    points.push(new THREE.Vector2(0.0, -1.8));
 
     // Torso Lathe Geometry
     const latheGeometry = new THREE.LatheGeometry(points, 32);
     
-    // --- Materials (Dark Blue & Pink/Peach Branding Theme) ---
-    // Solid base material with high roughness to mimic organic fabric/felt
+    // --- Materials (Vibrant Pink & Dark Blue Branding Lights) ---
+    // Solid base material with high roughness to mimic fabric/felt
     const baseMaterial = new THREE.MeshStandardMaterial({
-      color: 0x0a192f, // Deep Navy Blue
-      roughness: 0.85,
-      metalness: 0.1,
+      color: 0x1b2c4a, // Rich dark blue (less grey, more deep blue)
+      roughness: 0.8,
+      metalness: 0.15,
       side: THREE.DoubleSide,
       flatShading: true,
     });
@@ -68,133 +67,175 @@ export default function ThreeMannequin() {
     const torsoMesh = new THREE.Mesh(latheGeometry, baseMaterial);
     scene.add(torsoMesh);
 
-    // Wireframe overlay (Thread network)
+    // Wireframe overlay (Thread network) - Made brighter and thicker for visibility
     const wireframeGeo = new THREE.WireframeGeometry(latheGeometry);
     const wireframeMat = new THREE.LineBasicMaterial({
       color: 0xf0c0b5, // Soft Pink/Peach
       transparent: true,
-      opacity: 0.25,
-      linewidth: 1, // Note: linewidth > 1 usually not supported by WebGL implementations
+      opacity: 0.45, // Increased opacity from 0.25
     });
     const threadNetwork = new THREE.LineSegments(wireframeGeo, wireframeMat);
-    threadNetwork.scale.set(1.01, 1.01, 1.01); // Slightly larger to prevent z-fighting
+    threadNetwork.scale.set(1.01, 1.01, 1.01);
     scene.add(threadNetwork);
 
     // --- Standing Pole Base ---
     const poleGeo = new THREE.CylinderGeometry(0.05, 0.05, 1.5, 8);
-    const baseGeo = new THREE.CylinderGeometry(0.6, 0.65, 0.1, 16);
+    const baseGeo = new THREE.CylinderGeometry(0.65, 0.7, 0.1, 16);
     const metalMat = new THREE.MeshStandardMaterial({
-      color: 0x1f2937,
-      roughness: 0.5,
+      color: 0x1a2436,
+      roughness: 0.4,
       metalness: 0.8
     });
     
     const pole = new THREE.Mesh(poleGeo, metalMat);
-    pole.position.y = -2.5;
+    pole.position.y = -2.55;
     scene.add(pole);
 
     const standBase = new THREE.Mesh(baseGeo, metalMat);
-    standBase.position.y = -3.2;
+    standBase.position.y = -3.25;
     scene.add(standBase);
 
-    // Group to rotate both torso and threads
+    // Group to rotate everything
     const mannequinGroup = new THREE.Group();
     mannequinGroup.add(torsoMesh);
     mannequinGroup.add(threadNetwork);
     mannequinGroup.add(pole);
     mannequinGroup.add(standBase);
-    mannequinGroup.position.y = 0.5;
+    mannequinGroup.position.y = 0.3;
     scene.add(mannequinGroup);
 
     // --- Floating Fabric Fibers (Particle System) ---
-    const fiberCount = 180;
+    const fiberCount = 140;
     const fiberGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(fiberCount * 3);
     const velocities: number[] = [];
 
     for (let i = 0; i < fiberCount; i++) {
-      // Position particles around the mannequin
       const angle = Math.random() * Math.PI * 2;
-      const radius = 1.2 + Math.random() * 2.0;
+      const radius = 1.3 + Math.random() * 1.8;
       positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 4.5;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 4.0;
       positions[i * 3 + 2] = Math.sin(angle) * radius;
 
-      // Random velocities
       velocities.push(
-        (Math.random() - 0.5) * 0.003, // x
-        (Math.random() + 0.1) * 0.005,  // y (drift upwards)
-        (Math.random() - 0.5) * 0.003  // z
+        (Math.random() - 0.5) * 0.002, // x
+        (Math.random() + 0.15) * 0.006, // y
+        (Math.random() - 0.5) * 0.002  // z
       );
     }
 
     fiberGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     
-    // Particle texture (tiny circles)
     const particleMat = new THREE.PointsMaterial({
-      color: 0xf0c0b5,
-      size: 0.04,
+      color: 0xf0c0b5, // Pink/Peach particles
+      size: 0.05,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.8,
       blending: THREE.AdditiveBlending,
     });
 
     const fiberParticles = new THREE.Points(fiberGeometry, particleMat);
     scene.add(fiberParticles);
 
-    // --- Lighting ---
-    // Ambient light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+    // --- Lighting (Brighter & More Colorful to Avoid Grey Look) ---
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7); // Increased ambient light from 0.45
     scene.add(ambientLight);
 
-    // Directional Light 1: Deep Navy Blue from left
-    const blueLight = new THREE.DirectionalLight(0x0e244d, 2.5);
+    // Deep Navy Blue light from left (intensity increased to 4.5)
+    const blueLight = new THREE.DirectionalLight(0x1e40af, 4.5);
     blueLight.position.set(-5, 3, 2);
     scene.add(blueLight);
 
-    // Directional Light 2: Soft Peach/Pink from right
-    const pinkLight = new THREE.DirectionalLight(0xf0c0b5, 3.5);
+    // Brighter Pink/Peach light from right (intensity increased to 6.0)
+    const pinkLight = new THREE.DirectionalLight(0xf472b6, 6.0);
     pinkLight.position.set(5, 2, 4);
     scene.add(pinkLight);
 
-    // Additional soft highlight from top
-    const topLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    topLight.position.set(0, 5, 0);
-    scene.add(topLight);
+    // Soft white fill light from front
+    const fillLight = new THREE.DirectionalLight(0xffffff, 1.8);
+    fillLight.position.set(0, 2, 5);
+    scene.add(fillLight);
 
-    // --- Interactive Mouse Movement ---
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
+    // --- Drag-to-Rotate Interactivity (360 Degrees Mouse + Touch) ---
+    let isDragging = false;
+    let previousPointerPosition = { x: 0, y: 0 };
+    let rotationY = 0;
+    let rotationX = 0;
+    
+    // Damping/inertia physics variables
+    let targetRotationY = 0;
+    let targetRotationX = 0;
 
-    const onMouseMove = (event: MouseEvent) => {
-      // Calculate normalized mouse positions (-1 to 1)
-      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    const handlePointerDown = (e: MouseEvent | TouchEvent) => {
+      isDragging = true;
+      if (containerRef.current) {
+        containerRef.current.style.cursor = "grabbing";
+      }
+      
+      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+      previousPointerPosition = { x: clientX, y: clientY };
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    const handlePointerMove = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
+      
+      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+      
+      const deltaX = clientX - previousPointerPosition.x;
+      const deltaY = clientY - previousPointerPosition.y;
+
+      // Adjust rotation speed factor
+      targetRotationY += deltaX * 0.007;
+      targetRotationX += deltaY * 0.005;
+
+      // Clamp vertical rotation (pitch) to avoid turning completely upside down
+      targetRotationX = Math.max(-Math.PI / 4, Math.min(Math.PI / 4, targetRotationX));
+
+      previousPointerPosition = { x: clientX, y: clientY };
+    };
+
+    const handlePointerUp = () => {
+      isDragging = false;
+      if (containerRef.current) {
+        containerRef.current.style.cursor = "grab";
+      }
+    };
+
+    // Attach event listeners
+    const el = containerRef.current;
+    el.style.cursor = "grab";
+    
+    el.addEventListener("mousedown", handlePointerDown);
+    window.addEventListener("mousemove", handlePointerMove);
+    window.addEventListener("mouseup", handlePointerUp);
+
+    el.addEventListener("touchstart", handlePointerDown, { passive: true });
+    window.addEventListener("touchmove", handlePointerMove, { passive: true });
+    window.addEventListener("touchend", handlePointerUp);
 
     // --- Animation Loop ---
     const clock = new THREE.Clock();
 
     const animate = () => {
-      const elapsedTime = clock.getElapsedTime();
+      const delta = clock.getDelta();
 
-      // Slow idle rotation of the mannequin
-      mannequinGroup.rotation.y = elapsedTime * 0.12;
+      // If user isn't dragging, slowly rotate the mannequin on the Y axis automatically
+      if (!isDragging) {
+        targetRotationY += 0.15 * delta;
+      }
 
-      // Parallax rotation based on mouse coordinates
-      targetX = mouseX * 0.4;
-      targetY = mouseY * 0.2;
-      mannequinGroup.rotation.y += (targetX - mannequinGroup.rotation.y) * 0.05;
-      mannequinGroup.rotation.x += (targetY - mannequinGroup.rotation.x) * 0.05;
+      // Smooth interpolation (lerp) for smooth rotation behavior
+      rotationY += (targetRotationY - rotationY) * 0.1;
+      rotationX += (targetRotationX - rotationX) * 0.1;
 
-      // Animate floating fiber particles
+      mannequinGroup.rotation.y = rotationY;
+      mannequinGroup.rotation.x = rotationX;
+
+      // Animate floating particles
       const positionsArr = fiberGeometry.attributes.position.array as Float32Array;
       for (let i = 0; i < fiberCount; i++) {
-        // Apply velocity
         positionsArr[i * 3] += velocities[i * 3];
         positionsArr[i * 3 + 1] += velocities[i * 3 + 1];
         positionsArr[i * 3 + 2] += velocities[i * 3 + 2];
@@ -203,7 +244,7 @@ export default function ThreeMannequin() {
         if (positionsArr[i * 3 + 1] > 2.5) {
           positionsArr[i * 3 + 1] = -2.5;
           const angle = Math.random() * Math.PI * 2;
-          const radius = 1.2 + Math.random() * 1.5;
+          const radius = 1.3 + Math.random() * 1.5;
           positionsArr[i * 3] = Math.cos(angle) * radius;
           positionsArr[i * 3 + 2] = Math.sin(angle) * radius;
         }
@@ -230,7 +271,14 @@ export default function ThreeMannequin() {
 
     // --- Cleanup ---
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
+      el.removeEventListener("mousedown", handlePointerDown);
+      window.removeEventListener("mousemove", handlePointerMove);
+      window.removeEventListener("mouseup", handlePointerUp);
+      
+      el.removeEventListener("touchstart", handlePointerDown);
+      window.removeEventListener("touchmove", handlePointerMove);
+      window.removeEventListener("touchend", handlePointerUp);
+      
       window.removeEventListener("resize", onResize);
       if (containerRef.current && renderer.domElement) {
         containerRef.current.removeChild(renderer.domElement);
@@ -251,7 +299,7 @@ export default function ThreeMannequin() {
   return (
     <div 
       ref={containerRef} 
-      className="absolute inset-0 z-0 pointer-events-none w-full h-full"
+      className="absolute inset-0 z-0 pointer-events-auto w-full h-full"
     />
   );
 }
