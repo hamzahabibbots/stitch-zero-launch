@@ -4,8 +4,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Stitch Zero — luxury climate-tech materials brand.
- * Palette: near-black canvas, warm textile beige, emerald & copper glows.
+/* Stitch Zero — clean, premium sustainability brand.
+ * Palette: white canvas, warm grays, copper & emerald accents.
+ * Fonts: Sora (display), Inter (body), JetBrains Mono (mono).
  */
 
 @theme inline {
@@ -55,52 +56,52 @@
   --color-copper: var(--copper);
   --color-emerald: var(--emerald);
   --color-teal: var(--teal);
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 :root {
   --radius: 0.5rem;
-  --ink: oklch(0.14 0.006 60);
-  --bone: oklch(0.94 0.015 75);
-  --beige: oklch(0.78 0.045 70);
-  --copper: oklch(0.62 0.14 45);
-  --emerald: oklch(0.55 0.11 165);
-  --teal: oklch(0.55 0.06 195);
+  --ink: oklch(0.18 0.01 260);
+  --bone: oklch(0.97 0.005 85);
+  --beige: oklch(0.92 0.02 80);
+  --copper: oklch(0.55 0.16 40);
+  --emerald: oklch(0.52 0.12 160);
+  --teal: oklch(0.50 0.08 195);
 
-  --background: oklch(0.14 0.006 60);
-  --foreground: oklch(0.94 0.015 75);
-  --card: oklch(0.18 0.008 60);
-  --card-foreground: oklch(0.94 0.015 75);
-  --popover: oklch(0.18 0.008 60);
-  --popover-foreground: oklch(0.94 0.015 75);
-  --primary: oklch(0.78 0.045 70);
-  --primary-foreground: oklch(0.14 0.006 60);
-  --secondary: oklch(0.22 0.008 60);
-  --secondary-foreground: oklch(0.94 0.015 75);
-  --muted: oklch(0.22 0.008 60);
-  --muted-foreground: oklch(0.65 0.02 70);
-  --accent: oklch(0.62 0.14 45);
-  --accent-foreground: oklch(0.14 0.006 60);
+  --background: #ffffff;
+  --foreground: oklch(0.18 0.01 260);
+  --card: oklch(0.975 0.003 80);
+  --card-foreground: oklch(0.18 0.01 260);
+  --popover: #ffffff;
+  --popover-foreground: oklch(0.18 0.01 260);
+  --primary: oklch(0.55 0.16 40);
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.96 0.005 80);
+  --secondary-foreground: oklch(0.18 0.01 260);
+  --muted: oklch(0.96 0.005 80);
+  --muted-foreground: oklch(0.45 0.015 260);
+  --accent: oklch(0.55 0.16 40);
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.6 0.2 30);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.62 0.14 45);
-  --chart-1: oklch(0.62 0.14 45);
-  --chart-2: oklch(0.55 0.11 165);
+  --border: oklch(0 0 0 / 8%);
+  --input: oklch(0 0 0 / 6%);
+  --ring: oklch(0.55 0.16 40);
+  --chart-1: oklch(0.55 0.16 40);
+  --chart-2: oklch(0.52 0.12 160);
   --chart-3: oklch(0.78 0.045 70);
-  --chart-4: oklch(0.55 0.06 195);
+  --chart-4: oklch(0.50 0.08 195);
   --chart-5: oklch(0.4 0.05 60);
-  --sidebar: oklch(0.14 0.006 60);
-  --sidebar-foreground: oklch(0.94 0.015 75);
-  --sidebar-primary: oklch(0.62 0.14 45);
-  --sidebar-primary-foreground: oklch(0.14 0.006 60);
-  --sidebar-accent: oklch(0.22 0.008 60);
-  --sidebar-accent-foreground: oklch(0.94 0.015 75);
-  --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.62 0.14 45);
+  --sidebar: #ffffff;
+  --sidebar-foreground: oklch(0.18 0.01 260);
+  --sidebar-primary: oklch(0.55 0.16 40);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: oklch(0.96 0.005 80);
+  --sidebar-accent-foreground: oklch(0.18 0.01 260);
+  --sidebar-border: oklch(0 0 0 / 8%);
+  --sidebar-ring: oklch(0.55 0.16 40);
 }
 
 @layer base {
@@ -120,7 +121,7 @@
 
   ::selection {
     background: var(--copper);
-    color: var(--ink);
+    color: #ffffff;
   }
 }
 
@@ -128,10 +129,9 @@
 
 @utility font-display {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 30, "WONK" 0;
+  font-weight: 600;
   letter-spacing: -0.03em;
-  line-height: 0.92;
+  line-height: 1.05;
 }
 
 @utility text-balance {
@@ -145,9 +145,9 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.75 0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>");
-    opacity: 0.09;
-    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.04;
+    mix-blend-mode: multiply;
     z-index: 1;
   }
 }
@@ -161,9 +161,9 @@
     position: absolute;
     inset: -30%;
     background:
-      radial-gradient(40% 40% at 20% 30%, color-mix(in oklch, var(--copper) 55%, transparent), transparent 60%),
-      radial-gradient(45% 45% at 80% 70%, color-mix(in oklch, var(--emerald) 45%, transparent), transparent 65%),
-      radial-gradient(35% 35% at 60% 20%, color-mix(in oklch, var(--teal) 40%, transparent), transparent 70%);
+      radial-gradient(40% 40% at 20% 30%, color-mix(in oklch, var(--copper) 12%, transparent), transparent 60%),
+      radial-gradient(45% 45% at 80% 70%, color-mix(in oklch, var(--emerald) 10%, transparent), transparent 65%),
+      radial-gradient(35% 35% at 60% 20%, color-mix(in oklch, var(--teal) 8%, transparent), transparent 70%);
     filter: blur(80px) saturate(120%);
     animation: aurora-drift 22s ease-in-out infinite alternate;
     z-index: -1;
@@ -176,17 +176,18 @@
 }
 
 @utility glass {
-  background: linear-gradient(180deg, color-mix(in oklch, var(--bone) 8%, transparent), color-mix(in oklch, var(--ink) 20%, transparent));
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(248,249,250,0.7));
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid color-mix(in oklch, var(--bone) 12%, transparent);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 
 @utility glow-copper {
   box-shadow:
-    0 0 0 1px color-mix(in oklch, var(--copper) 40%, transparent),
-    0 20px 60px -20px color-mix(in oklch, var(--copper) 55%, transparent),
-    inset 0 1px 0 color-mix(in oklch, var(--bone) 20%, transparent);
+    0 0 0 1px color-mix(in oklch, var(--copper) 25%, transparent),
+    0 20px 60px -20px color-mix(in oklch, var(--copper) 30%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.6);
 }
 
 @keyframes float-y {
@@ -207,11 +208,11 @@
 }
 @utility text-shimmer {
   background: linear-gradient(90deg,
-    color-mix(in oklch, var(--bone) 90%, transparent) 0%,
-    var(--copper) 25%,
-    color-mix(in oklch, var(--bone) 90%, transparent) 50%,
-    var(--emerald) 75%,
-    color-mix(in oklch, var(--bone) 90%, transparent) 100%);
+    var(--copper) 0%,
+    var(--emerald) 25%,
+    var(--copper) 50%,
+    var(--teal) 75%,
+    var(--copper) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -219,15 +220,20 @@
   animation: shimmer 8s linear infinite;
 }
 
-@keyframes fiber-fall {
-  0%   { transform: translate3d(0,-10vh,0) rotate(0deg); opacity: 0; }
-  10%  { opacity: 0.7; }
-  100% { transform: translate3d(20px, 110vh, 0) rotate(220deg); opacity: 0; }
-}
-@utility fiber { animation: fiber-fall linear infinite; }
-
 @utility hairline {
-  background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--bone) 25%, transparent), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent);
   height: 1px;
   width: 100%;
+}
+
+/* Carousel auto-scroll */
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@utility logo-scroll { animation: logo-scroll 30s linear infinite; }
+
+/* Section alternating backgrounds */
+@utility section-alt {
+  background: oklch(0.98 0.003 80);
 }
