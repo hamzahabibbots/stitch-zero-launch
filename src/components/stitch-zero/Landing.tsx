@@ -88,16 +88,32 @@ function Nav() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 180]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
     <section
       id="top"
       ref={ref}
-      className="relative min-h-[100svh] w-full pt-32 pb-20 flex items-center bg-white"
+      className="relative min-h-[100svh] w-full overflow-hidden pt-32 pb-20 flex items-center bg-white"
     >
+      {/* Background Image Backdrop */}
+      <motion.div
+        style={{ y, scale, opacity }}
+        className="absolute inset-0 z-0"
+      >
+        <img
+          src={heroImg}
+          alt="Layered fabric mannequin backdrop"
+          className="h-full w-full object-cover opacity-25"
+          width={1280}
+          height={853}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-white" />
+        <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_50%,transparent,white_80%)]" />
+      </motion.div>
+
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 grid gap-12 lg:grid-cols-2 items-center">
         {/* Left Column: Text & CTAs & Ticker */}
         <div className="flex flex-col gap-6 md:text-left text-center">
@@ -177,10 +193,10 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right Column: 3D Mannequin Viewport */}
+        {/* Right Column: Smaller 3D Mannequin Viewport */}
         <motion.div
           style={{ y, scale, opacity }}
-          className="relative w-full h-[450px] sm:h-[550px] lg:h-[700px] flex items-center justify-center overflow-hidden"
+          className="relative w-full h-[320px] sm:h-[400px] lg:h-[450px] flex items-center justify-center overflow-hidden"
         >
           <ThreeMannequin />
         </motion.div>
