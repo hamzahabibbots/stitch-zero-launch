@@ -14,8 +14,8 @@ export default function ThreeMannequin() {
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.z = 7.5;
-    camera.position.y = 0.2;
+    camera.position.z = 5.2; // Moved closer from 7.5 to make mannequin look significantly larger
+    camera.position.y = 0.0;
 
     // --- Renderer Setup ---
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -102,7 +102,8 @@ export default function ThreeMannequin() {
     mannequinGroup.add(threadNetwork);
     mannequinGroup.add(pole);
     mannequinGroup.add(standBase);
-    mannequinGroup.position.y = 0.3;
+    mannequinGroup.position.y = -0.1; // Centered torso alignment
+    mannequinGroup.scale.set(1.15, 1.15, 1.15); // Scale group up by 15% for added volume
     scene.add(mannequinGroup);
 
     // --- Floating Fabric Fibers (Particle System) ---

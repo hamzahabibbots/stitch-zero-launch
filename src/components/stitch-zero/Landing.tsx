@@ -98,11 +98,11 @@ function Hero() {
       ref={ref}
       className="relative min-h-[100svh] w-full pt-32 pb-20 flex items-center bg-white"
     >
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 grid gap-12 lg:grid-cols-2 items-center">
         {/* Left Column: Text & CTAs & Ticker */}
         <div className="flex flex-col gap-6 md:text-left text-center">
           <motion.h1
-            className="font-display text-[clamp(2.8rem,7vw,5.5rem)] text-ink leading-[1.05]"
+            className="font-display text-[clamp(2.4rem,5vw,4.2rem)] text-ink leading-[1.05]"
           >
             {["Transforming Textile Waste", "Into the Next Generation of", "Sustainable Materials."].map((line, i) => (
               <motion.span
@@ -180,7 +180,7 @@ function Hero() {
         {/* Right Column: 3D Mannequin Viewport */}
         <motion.div
           style={{ y, scale, opacity }}
-          className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden"
+          className="relative w-full h-[450px] sm:h-[550px] lg:h-[700px] flex items-center justify-center overflow-hidden"
         >
           <ThreeMannequin />
         </motion.div>
