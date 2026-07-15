@@ -102,7 +102,7 @@ export default function ThreeMannequin() {
     mannequinGroup.add(threadNetwork);
     mannequinGroup.add(pole);
     mannequinGroup.add(standBase);
-    mannequinGroup.position.y = 0.3; // Default height alignment
+    mannequinGroup.position.y = 0.95; // Shifted upward as requested
     mannequinGroup.scale.set(1.0, 1.0, 1.0); // Reset scale to normal
     scene.add(mannequinGroup);
 

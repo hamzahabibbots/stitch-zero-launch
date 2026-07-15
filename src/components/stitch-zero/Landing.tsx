@@ -115,7 +115,7 @@ function Hero() {
       </motion.div>
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 md:px-10 grid gap-12 lg:grid-cols-2 items-center">
-        {/* Left Column: Text & CTAs & Ticker */}
+        {/* Left Column: Title, Buttons, Ticker */}
         <div className="flex flex-col gap-6 md:text-left text-center">
           <motion.h1
             className="font-display text-[clamp(2.4rem,5vw,4.2rem)] text-ink leading-[1.05]"
@@ -135,23 +135,12 @@ function Hero() {
             ))}
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: EASE }}
-            className="mx-auto max-w-2xl text-balance text-lg text-muted-foreground md:mx-0 md:text-xl leading-relaxed"
-          >
-            Stitch Zero is a circular materials company converting discarded textile waste into
-            high-performance, biodegradable alternatives to plastic. We're starting with
-            retail mannequins, and building toward a future where industrial waste, not virgin resources,
-            becomes the raw material of modern manufacturing.
-          </motion.p>
-
+          {/* Action Buttons: Moved Up directly below Heading */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8, ease: EASE }}
-            className="flex flex-wrap items-center justify-center gap-4 md:justify-start mt-4"
+            transition={{ delay: 0.7, duration: 0.8, ease: EASE }}
+            className="flex flex-wrap items-center justify-center gap-4 md:justify-start mt-2"
           >
             <a
               href="#contact"
@@ -182,7 +171,7 @@ function Hero() {
                 key={k}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 + i * 0.08, duration: 0.7, ease: EASE }}
+                transition={{ delay: 0.9 + i * 0.08, duration: 0.7, ease: EASE }}
               >
                 <div className="font-display text-3xl text-ink">{k}</div>
                 <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground">
@@ -193,13 +182,28 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Smaller 3D Mannequin Viewport */}
-        <motion.div
-          style={{ y, scale, opacity }}
-          className="relative w-full h-[320px] sm:h-[400px] lg:h-[450px] flex items-center justify-center overflow-hidden"
-        >
-          <ThreeMannequin />
-        </motion.div>
+        {/* Right Column: 3D Mannequin Viewport & Description Paragraph */}
+        <div className="flex flex-col gap-6 items-center lg:items-start w-full">
+          <motion.div
+            style={{ y, scale, opacity }}
+            className="relative w-full h-[320px] sm:h-[400px] lg:h-[450px] flex items-center justify-center overflow-hidden"
+          >
+            <ThreeMannequin />
+          </motion.div>
+
+          {/* Description Paragraph: Moved Right directly below the 3D Viewport */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8, ease: EASE }}
+            className="mx-auto max-w-xl text-balance text-sm lg:text-base text-muted-foreground md:mx-0 leading-relaxed text-center lg:text-left border-l-2 border-[#5E1930]/20 pl-4"
+          >
+            Stitch Zero is a circular materials company converting discarded textile waste into
+            high-performance, biodegradable alternatives to plastic. We're starting with
+            retail mannequins, and building toward a future where industrial waste, not virgin resources,
+            becomes the raw material of modern manufacturing.
+          </motion.p>
+        </div>
       </div>
     </section>
   );
