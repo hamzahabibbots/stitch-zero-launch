@@ -744,7 +744,6 @@ function Recognition() {
     { t: "25+ National & International Recognitions", s: "Across premier IITs and IIMs" },
     { t: "Mentored by Climate VCs", s: "Sustainability and climate investors" },
     { t: "8+ Incubator Shortlists", s: "Including NSRCEL at IIM Bangalore" },
-    { t: "1 of 50 Selected", s: "IIT Madras Accelerator" },
   ];
   return (
     <section className="relative py-24 md:py-32">
@@ -755,7 +754,7 @@ function Recognition() {
         </h2>
 
         {/* Highlights - pure borderless columns */}
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 border-b border-black/5 pb-12">
+        <div className="mt-16 grid gap-8 md:grid-cols-3 border-b border-black/5 pb-12">
           {highlights.map((c, i) => (
             <div key={i} className="space-y-2">
               <div className="font-display text-lg text-ink font-bold leading-tight">{c.t}</div>
