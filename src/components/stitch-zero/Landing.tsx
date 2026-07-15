@@ -264,7 +264,7 @@ function Problem() {
                 Most of it is landfilled or burned, despite retaining real material value. The result is landfill overflow, greenhouse gas emissions, resource wastage, and a textile industry that has yet to close its own loop.
               </p>
               <p className="text-muted-foreground/80 text-sm italic leading-relaxed border-l-2 border-[#5E1930]/30 pl-4">
-                "Growing up in Coimbatore, Tamil Nadu, often called the Manchester of South India, our founder witnessed textile waste being dumped directly into rivers, clogging waterways and contaminating the water communities depended on. That firsthand reality became the founding motivation behind Stitch Zero."
+                "Both our founders witnessed India's textile waste problem firsthand, from opposite ends of the supply chain. One saw landfills near Assam piling up with fabric that never got a second life, making an impact on the lives of those who did not even create it. The other, growing up in Coimbatore, Tamil Nadu, the Manchester of South India, watched textile waste dumped straight into rivers, clogging waterways, several community depended on. Two cities, one broken system, and the shared motivation behind Stitch Zero."
               </p>
             </motion.div>
             <motion.div
