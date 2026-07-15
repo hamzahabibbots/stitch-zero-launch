@@ -133,7 +133,13 @@ function Nav() {
       transition={{ delay: 0.3, duration: 0.8, ease: EASE }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-3" : "py-6"}`}
     >
-      <div className={`mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10 ${scrolled ? "glass rounded-full py-2" : ""} transition-all duration-500`}>
+      <div
+        className={`mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10 rounded-full backdrop-blur-xl backdrop-saturate-150 border transition-all duration-500 ${
+          scrolled
+            ? "bg-ink/70 border-border/60 py-2 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]"
+            : "bg-ink/40 border-border/30 py-3"
+        }`}
+      >
         <a href="#top" className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.32em]">
           <span className="inline-block h-2 w-2 rounded-full bg-copper shadow-[0_0_12px_var(--copper)]" />
           Stitch <span className="text-copper">Zero</span>
