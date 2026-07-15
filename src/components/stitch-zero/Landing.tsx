@@ -204,10 +204,10 @@ function Marquee() {
 /* -------- Section label helper -------- */
 function SectionLabel({ n, label }: { n: string; label: string }) {
   return (
-    <div className="flex items-center justify-center gap-4 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:justify-start">
+    <div className="flex items-center justify-center gap-4 font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-muted-foreground md:justify-start">
       <span className="text-[#5E1930] font-bold">{n}</span>
       <span className="hairline w-12" />
-      <span>{label}</span>
+      <span className="font-semibold">{label}</span>
     </div>
   );
 }
