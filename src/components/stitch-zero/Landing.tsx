@@ -202,12 +202,12 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
       </motion.div>
 
-      <div className="relative z-10 mx-auto flex max-w-[1400px] flex-col gap-10 px-6 md:px-10">
+      <div className="relative z-10 mx-auto flex max-w-[1400px] flex-col gap-10 px-6 text-center md:px-10 md:text-left">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9, ease: EASE }}
-          className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground"
+          className="flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground md:justify-start"
         >
           <span className="inline-block h-px w-8 bg-copper" />
           <span>Circular Materials · Est. Coimbatore</span>
@@ -252,7 +252,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.9, ease: EASE }}
-          className="max-w-xl text-balance text-lg text-muted-foreground md:text-xl"
+          className="mx-auto max-w-xl text-balance text-lg text-muted-foreground md:mx-0 md:text-xl"
         >
           A circular materials company converting discarded textile waste into
           high-performance, biodegradable alternatives to plastic — starting with
@@ -263,7 +263,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.9, ease: EASE }}
-          className="flex flex-wrap items-center gap-4"
+          className="flex flex-wrap items-center justify-center gap-4 md:justify-start"
         >
           <a
             href="#contact"
@@ -283,7 +283,7 @@ function Hero() {
         </motion.div>
 
         {/* Ticker */}
-        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-border/40 pt-8 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-border/40 pt-8 text-center md:grid-cols-4 md:text-left">
           {[
             ["7.8M", "tonnes textile waste / yr in India"],
             ["≈20 kg", "waste per mannequin"],
