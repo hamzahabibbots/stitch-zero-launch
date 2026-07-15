@@ -202,12 +202,12 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
       </motion.div>
 
-      <div className="relative z-10 mx-auto flex max-w-[1400px] flex-col gap-10 px-6 md:px-10">
+      <div className="relative z-10 mx-auto flex max-w-[1400px] flex-col gap-10 px-6 text-center md:px-10 md:text-left">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9, ease: EASE }}
-          className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground"
+          className="flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground md:justify-start"
         >
           <span className="inline-block h-px w-8 bg-copper" />
           <span>Circular Materials · Est. Coimbatore</span>
@@ -252,7 +252,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.9, ease: EASE }}
-          className="max-w-xl text-balance text-lg text-muted-foreground md:text-xl"
+          className="mx-auto max-w-xl text-balance text-lg text-muted-foreground md:mx-0 md:text-xl"
         >
           A circular materials company converting discarded textile waste into
           high-performance, biodegradable alternatives to plastic — starting with
@@ -263,7 +263,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.9, ease: EASE }}
-          className="flex flex-wrap items-center gap-4"
+          className="flex flex-wrap items-center justify-center gap-4 md:justify-start"
         >
           <a
             href="#contact"
@@ -283,7 +283,7 @@ function Hero() {
         </motion.div>
 
         {/* Ticker */}
-        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-border/40 pt-8 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-border/40 pt-8 text-center md:grid-cols-4 md:text-left">
           {[
             ["7.8M", "tonnes textile waste / yr in India"],
             ["≈20 kg", "waste per mannequin"],
@@ -336,7 +336,7 @@ function Problem() {
     <section id="problem" className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="01" label="The Problem" />
-        <h2 className="mt-8 max-w-4xl font-display text-[clamp(2.4rem,6vw,6rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.4rem,6vw,6rem)] font-[300] text-balance">
           Two industries. <span className="text-copper italic">One waste problem.</span>{" "}
           <span className="opacity-60">Zero real solution.</span>
         </h2>
@@ -385,13 +385,13 @@ function PanelCard({ img, eyebrow, stat, statLabel, body }: { img: string; eyebr
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
       </div>
-      <div className="relative -mt-24 p-8 md:p-10">
+      <div className="relative -mt-24 p-8 text-center md:p-10 md:text-left">
         <div className="font-mono text-[10px] uppercase tracking-[0.35em] text-copper">{eyebrow}</div>
-        <div className="mt-6 flex items-baseline gap-4">
+        <div className="mt-6 flex items-baseline justify-center gap-4 md:justify-start">
           <span className="font-display text-6xl md:text-7xl">{stat}</span>
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{statLabel}</span>
         </div>
-        <p className="mt-6 max-w-md text-muted-foreground">{body}</p>
+        <p className="mx-auto mt-6 max-w-md text-muted-foreground md:mx-0">{body}</p>
       </div>
     </motion.article>
   );
@@ -400,7 +400,7 @@ function PanelCard({ img, eyebrow, stat, statLabel, body }: { img: string; eyebr
 /* -------- Section label helper -------- */
 function SectionLabel({ n, label }: { n: string; label: string }) {
   return (
-    <div className="flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
+    <div className="flex items-center justify-center gap-4 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground md:justify-start">
       <span className="text-copper">{n}</span>
       <span className="hairline w-16" />
       <span>{label}</span>
@@ -422,7 +422,7 @@ function Process() {
     <section id="platform" className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="02" label="How it works" />
-        <h2 className="mt-8 max-w-4xl font-display text-[clamp(2.4rem,6vw,6rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.4rem,6vw,6rem)] font-[300] text-balance">
           One industry's waste, becomes another's <span className="italic text-copper">infrastructure.</span>
         </h2>
         <div className="mt-24 relative">
@@ -437,11 +437,11 @@ function Process() {
                 transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }}
                 className="relative"
               >
-                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full glass">
+                <div className="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full glass md:mx-0">
                   <span className="font-mono text-xs text-copper">0{i + 1}</span>
                 </div>
-                <div className="mt-6 font-display text-2xl">{s.k}</div>
-                <p className="mt-2 text-sm text-muted-foreground">{s.v}</p>
+                <div className="mt-6 text-center font-display text-2xl md:text-left">{s.k}</div>
+                <p className="mt-2 text-center text-sm text-muted-foreground md:text-left">{s.v}</p>
               </motion.li>
             ))}
           </ol>
@@ -460,11 +460,11 @@ function Platform() {
         <SectionLabel n="03" label="Material Platform" />
         <div className="mt-8 grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
-            <h2 className="font-display text-[clamp(2.4rem,6vw,5.5rem)] font-[300] text-balance">
+            <h2 className="mx-auto text-center font-display text-[clamp(2.4rem,6vw,5.5rem)] font-[300] text-balance md:mx-0 md:text-left">
               We're not building <span className="italic opacity-60">a product.</span>{" "}
               We're building a <span className="text-copper">materials platform.</span>
             </h2>
-            <p className="mt-8 max-w-lg text-muted-foreground">
+            <p className="mx-auto mt-8 max-w-lg text-center text-muted-foreground md:mx-0 md:text-left">
               Most textile recycling downcycles waste into lower-value products.
               We do the opposite — a high-value composite whose structural,
               mechanical, and aesthetic properties can be tuned across
@@ -539,7 +539,7 @@ function Compare() {
     <section className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="04" label="Why we're different" />
-        <h2 className="mt-8 max-w-4xl font-display text-[clamp(2.4rem,6vw,5.5rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.4rem,6vw,5.5rem)] font-[300] text-balance">
           The only approach tackling textile waste and plastic dependency as <span className="italic text-copper">one problem.</span>
         </h2>
         <div className="mt-16 space-y-3">
@@ -550,7 +550,7 @@ function Compare() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15%" }}
               transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }}
-              className="grid grid-cols-1 gap-3 rounded-3xl border border-border/60 p-6 md:grid-cols-[1fr_auto_1fr] md:gap-8 md:p-8"
+              className="grid grid-cols-1 gap-3 rounded-3xl border border-border/60 p-6 text-center md:grid-cols-[1fr_auto_1fr] md:gap-8 md:p-8 md:text-left"
             >
               <div className="opacity-50">
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{r.l}</div>
@@ -617,7 +617,7 @@ function Market() {
                 <Counter to={it.n} />
                 <span className="text-copper">{it.s}</span>
               </div>
-              <div className="mt-6 max-w-xs text-sm text-muted-foreground">{it.label}</div>
+              <div className="mx-auto mt-6 max-w-xs text-center text-sm text-muted-foreground md:mx-0 md:text-left">{it.label}</div>
             </motion.div>
           ))}
         </div>
@@ -633,7 +633,7 @@ function Impact() {
     <section className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="06" label="Impact ecosystem" />
-        <h2 className="mt-8 max-w-4xl font-display text-[clamp(2.4rem,6vw,5rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.4rem,6vw,5rem)] font-[300] text-balance">
           Every mannequin cascades into a wider <span className="italic text-copper">systemic effect.</span>
         </h2>
         <div className="mt-20 relative">
@@ -645,7 +645,7 @@ function Impact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.1, ease: EASE }}
-                className="glass relative rounded-2xl p-6 transition hover:-translate-y-1 hover:border-copper/40"
+                className="glass relative rounded-2xl p-6 text-center transition hover:-translate-y-1 hover:border-copper/40 md:text-left"
               >
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-copper">0{i + 1}</div>
                 <div className="mt-4 font-display text-xl">{n}</div>
@@ -721,7 +721,7 @@ function Recognition() {
               transition={{ duration: 0.9, delay: i * 0.08, ease: EASE }}
               whileHover={{ y: -6, rotateY: 4, rotateX: -3 }}
               style={{ transformPerspective: 1000 }}
-              className="glass rounded-3xl p-8"
+              className="glass rounded-3xl p-8 text-center md:text-left"
             >
               <div className="font-display text-2xl leading-tight">{c.t}</div>
               <div className="mt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{c.s}</div>
@@ -743,7 +743,7 @@ function Team() {
     <section id="team" className="relative py-32 md:py-48">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <SectionLabel n="09" label="The Team" />
-        <h2 className="mt-8 max-w-3xl font-display text-[clamp(2.2rem,5vw,4.5rem)] font-[300] text-balance">
+        <h2 className="mx-auto mt-8 max-w-3xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,4.5rem)] font-[300] text-balance">
           Founded by two undergraduates at SRCC, University of Delhi. Building a materials company from <span className="italic text-copper">Coimbatore</span> — the Manchester of South India.
         </h2>
         <div className="mt-16 grid gap-8 md:grid-cols-2">
@@ -754,7 +754,7 @@ function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: i * 0.12, ease: EASE }}
-              className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card p-10"
+              className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card p-10 text-center md:text-left"
             >
               <div className="absolute inset-0 bg-[radial-gradient(400px_circle_at_var(--mx,50%)_var(--my,50%),color-mix(in_oklch,var(--copper)_18%,transparent),transparent_70%)] opacity-0 transition-opacity group-hover:opacity-100" />
               <div className="relative">
