@@ -385,10 +385,10 @@ function PanelCard({ img, eyebrow, stat, statLabel, body }: { img: string; eyebr
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
       </div>
-      <div className="relative -mt-24 p-8 text-center md:p-10 md:text-left">
-        <div className="font-mono text-[10px] uppercase tracking-[0.35em] text-copper">{eyebrow}</div>
-        <div className="mt-6 flex items-baseline justify-center gap-4 md:justify-start">
-          <span className="font-display text-6xl md:text-7xl">{stat}</span>
+      <div className="relative -mt-24 p-6 text-center sm:p-8 md:p-10 md:text-left">
+        <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-copper sm:tracking-[0.35em]">{eyebrow}</div>
+        <div className="mt-6 flex flex-col items-center gap-2 md:flex-row md:items-baseline md:gap-4">
+          <span className="font-display text-4xl leading-none sm:text-5xl md:text-7xl break-words">{stat}</span>
           <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{statLabel}</span>
         </div>
         <p className="mx-auto mt-6 max-w-md text-muted-foreground md:mx-0">{body}</p>
