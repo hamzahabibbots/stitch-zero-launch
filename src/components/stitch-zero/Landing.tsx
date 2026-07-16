@@ -139,7 +139,7 @@ function Nav() {
 
         <a
           href="#contact"
-          className="rounded-full bg-[#5E1930] hover:bg-[#4E1428] px-6 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-white transition-all hover:shadow-[0_8px_20px_rgba(94,25,48,0.25)] flex items-center justify-center h-10 align-middle"
+          className="rounded-full bg-[#031d35] hover:bg-[#052a4c] px-6 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-white transition-all hover:shadow-[0_8px_20px_rgba(3,29,53,0.25)] flex items-center justify-center h-10 align-middle"
         >
           Get in Touch
         </a>
@@ -231,7 +231,7 @@ function Hero() {
         >
           <a
             href="#contact"
-            className="group relative overflow-hidden rounded-full bg-[#5E1930] hover:bg-[#4E1428] px-8 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(94,25,48,0.25)] flex items-center justify-center h-12 align-middle"
+            className="group relative overflow-hidden rounded-full bg-[#031d35] hover:bg-[#052a4c] px-8 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(3,29,53,0.25)] flex items-center justify-center h-12 align-middle"
           >
             Partner with Stitch Zero
           </a>
@@ -298,7 +298,7 @@ function SectionLabel({ n, label }: { n: string; label: string }) {
       transition={{ duration: 0.6, ease: EASE }}
       className="flex items-center justify-center gap-4 font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-muted-foreground md:justify-start"
     >
-      <span className="text-[#5E1930] font-bold">{n}</span>
+      <span className="text-[#031d35] font-bold">{n}</span>
       <motion.span
         className="hairline w-12 origin-left"
         initial={{ scaleX: 0 }}
@@ -331,7 +331,7 @@ function Problem() {
               transition={{ duration: 0.8, ease: EASE }}
               className="space-y-6"
             >
-              <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#5E1930] font-bold">01 / Waste Crisis</div>
+              <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#031d35] font-bold">01 / Waste Crisis</div>
               <h3 className="font-display text-2xl md:text-3xl text-ink leading-tight">A Mountain of Textile Waste</h3>
               
               <div className="flex items-baseline gap-4 border-b border-black/5 pb-4">
@@ -342,7 +342,7 @@ function Problem() {
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 Most of it is landfilled or burned, despite retaining real material value. The result is landfill overflow, greenhouse gas emissions, resource wastage, and a textile industry that has yet to close its own loop.
               </p>
-              <p className="text-muted-foreground/80 text-xs md:text-sm italic leading-relaxed border-l-2 border-[#5E1930]/30 pl-4">
+              <p className="text-muted-foreground/80 text-xs md:text-sm italic leading-relaxed border-l-2 border-[#031d35]/30 pl-4">
                 "Both our founders witnessed India's textile waste problem firsthand, from opposite ends of the supply chain. One saw landfills near Assam piling up with fabric that never got a second life, making an impact on the lives of those who did not even create it. The other, growing up in Coimbatore, Tamil Nadu, the Manchester of South India, watched textile waste dumped straight into rivers, clogging waterways, several community depended on. Two cities, one broken system, and the shared motivation behind Stitch Zero."
               </p>
             </motion.div>
@@ -373,7 +373,7 @@ function Problem() {
               transition={{ duration: 0.8, ease: EASE }}
               className="space-y-6 lg:order-2 order-1"
             >
-              <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#5E1930] font-bold">02 / Plastic Dependency</div>
+              <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#031d35] font-bold">02 / Plastic Dependency</div>
               <h3 className="font-display text-2xl md:text-3xl text-ink leading-tight">A Retail Industry Built on Plastic</h3>
               
               <div className="flex items-baseline gap-4 border-b border-black/5 pb-4">
@@ -386,10 +386,10 @@ function Problem() {
               </p>
               <ul className="grid grid-cols-2 gap-4 text-xs md:text-sm text-foreground">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#5E1930] font-bold">✓</span> No biodegradable cycle
+                  <span className="text-[#031d35] font-bold">✓</span> No biodegradable cycle
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#5E1930] font-bold">✓</span> Impossible to recycle
+                  <span className="text-[#031d35] font-bold">✓</span> Impossible to recycle
                 </li>
               </ul>
             </motion.div>
@@ -429,7 +429,7 @@ function Solution() {
               {steps.map((s, i) => (
                 <Reveal key={i} x={-24} y={0} delay={i * 0.1}>
                   <div className="group flex gap-6 items-start">
-                    <span className="font-mono text-xs font-bold text-[#5E1930] w-6 shrink-0 mt-1 tabular-nums transition-colors group-hover:text-copper">0{i+1}</span>
+                    <span className="font-mono text-xs font-bold text-[#031d35] w-6 shrink-0 mt-1 tabular-nums transition-colors group-hover:text-copper">0{i+1}</span>
                     <div>
                       <h4 className="font-display text-lg text-ink font-semibold">{s.k}</h4>
                       <p className="text-muted-foreground text-xs md:text-sm mt-1 leading-relaxed">{s.v}</p>
@@ -481,7 +481,7 @@ function FirstProduct() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-black/5 pt-6">
               {features.map((f, i) => (
                 <div key={i} className="flex items-center gap-3 text-xs md:text-sm text-foreground">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald/10 text-emerald text-[10px] font-bold">✓</span>
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#031d35]/10 text-[#031d35] text-[10px] font-bold">✓</span>
                   {f}
                 </div>
               ))}
@@ -593,7 +593,7 @@ function Compare() {
               <tr className="border-b border-black/5">
                 <th className="py-5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground w-1/3">Alternative Approaches</th>
                 <th className="py-5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground w-1/3">Their Model</th>
-                <th className="py-5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#5E1930] font-bold w-1/3">Stitch Zero Approach</th>
+                <th className="py-5 font-mono text-[10px] uppercase tracking-[0.2em] text-[#031d35] font-bold w-1/3">Stitch Zero Approach</th>
               </tr>
             </thead>
             <tbody>
@@ -608,8 +608,8 @@ function Compare() {
                 >
                   <td className="py-6 font-display text-base md:text-lg text-ink pr-6 font-medium align-top">{row.name}</td>
                   <td className="py-6 text-xs md:text-sm text-muted-foreground leading-relaxed pr-6 line-through decoration-copper/20 align-top">{row.traditional}</td>
-                  <td className="py-6 text-xs md:text-sm text-foreground leading-relaxed font-medium pl-3 border-l border-[#5E1930]/10 bg-[#5E1930]/[0.01] align-top">
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#5E1930] mr-2 align-middle" />
+                  <td className="py-6 text-xs md:text-sm text-foreground leading-relaxed font-medium pl-3 border-l border-[#031d35]/10 bg-[#031d35]/[0.01] align-top">
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#031d35] mr-2 align-middle" />
                     {row.zero}
                   </td>
                 </motion.tr>
@@ -694,7 +694,7 @@ function Impact() {
   const pillars = [
     {
       title: "Environmental",
-      border: "border-emerald/40",
+      border: "border-[#031d35]/40",
       items: ["Textile waste diverted from landfills", "Plastic mannequins displaced from the supply chain", "Reduced microplastic pollution", "Lower carbon emissions", "Reduced dependency on virgin plastic"],
     },
     {
@@ -704,7 +704,7 @@ function Impact() {
     },
     {
       title: "Social",
-      border: "border-[#5E1930]/40",
+      border: "border-[#031d35]/40",
       items: ["Supports cleaner, healthier communities", "Encourages responsible production practices", "Strengthens local manufacturing ecosystems", "Drives broader circular economy adoption"],
     },
   ];
@@ -714,7 +714,7 @@ function Impact() {
         <SectionLabel n="08" label="Impact" />
         <Reveal>
           <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-            Every mannequin cascades into a wider <span className="text-[#5E1930] font-light italic">systemic effect.</span>
+            Every mannequin cascades into a wider <span className="text-[#031d35] font-light italic">systemic effect.</span>
           </h2>
         </Reveal>
 
@@ -752,12 +752,12 @@ function SDGs() {
         <SectionLabel n="09" label="UN Sustainable Development Goals" />
         <Reveal>
           <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-            Aligned with the <span className="text-[#5E1930]">UN Sustainable Development Goals</span>
+            Aligned with the <span className="text-[#031d35]">UN Sustainable Development Goals</span>
           </h2>
         </Reveal>
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {goals.map((g, i) => (
-            <Reveal key={i} delay={i * 0.1} y={20} className="group flex flex-col border-t border-black/10 pt-6 space-y-4 transition-colors duration-300 hover:border-[#5E1930]/40">
+            <Reveal key={i} delay={i * 0.1} y={20} className="group flex flex-col border-t border-black/10 pt-6 space-y-4 transition-colors duration-300 hover:border-[#031d35]/40">
               <img
                 src={g.logo}
                 alt={`SDG ${g.n}: ${g.title}`}
@@ -803,13 +803,13 @@ function Roadmap() {
 
           <Reveal x={-24} y={0} className="space-y-6 lg:pr-12 text-left">
             <div className="flex items-center gap-3 justify-start">
-              <span className="h-2 w-2 rounded-full bg-emerald" />
-              <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-emerald font-bold">Completed Phase</h3>
+              <span className="h-2 w-2 rounded-full bg-[#031d35]" />
+              <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[#031d35] font-bold">Completed Phase</h3>
             </div>
             <ul className="space-y-4">
               {completed.map((item, i) => (
-                <Reveal as="li" key={i} delay={0.1 + i * 0.07} y={14} className="flex items-start gap-3 text-xs md:text-sm text-foreground">
-                  <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald/10 text-emerald text-[9px] font-bold">✓</span>
+                <Reveal key={i} delay={0.1 + i * 0.07} y={14} className="flex items-start gap-3 text-xs md:text-sm text-foreground">
+                  <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#031d35]/10 text-[#031d35] text-[9px] font-bold">✓</span>
                   <span className="text-muted-foreground leading-relaxed">{item}</span>
                 </Reveal>
               ))}
@@ -823,7 +823,7 @@ function Roadmap() {
             </div>
             <ul className="space-y-4">
               {next.map((item, i) => (
-                <Reveal as="li" key={i} delay={0.2 + i * 0.07} y={14} className="flex items-start gap-3 text-xs md:text-sm text-foreground">
+                <Reveal key={i} delay={0.2 + i * 0.07} y={14} className="flex items-start gap-3 text-xs md:text-sm text-foreground">
                   <span className="mt-1.5 flex h-2 w-2 shrink-0 rounded-full bg-copper" />
                   <span className="text-muted-foreground leading-relaxed">{item}</span>
                 </Reveal>
@@ -880,7 +880,7 @@ function Recognition() {
         <SectionLabel n="11" label="Recognition" />
         <Reveal>
           <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-            Shortlisted and selected by <span className="text-[#5E1930]">industry leaders.</span>
+            Shortlisted and selected by <span className="text-[#031d35]">industry leaders.</span>
           </h2>
         </Reveal>
 
@@ -894,54 +894,86 @@ function Recognition() {
           ))}
         </div>
 
-        {/* Institution logos carousel */}
-        <div className="mt-12">
-          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground text-center mb-6">
-            Recognised at 25+ platforms across
+        {/* Institution logos — filmstrip rail */}
+        <div className="mt-16">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <span className="h-px w-10 bg-[#031d35]/50" />
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#031d35]">
+              Recognised at 25+ platforms
+            </span>
+            <span className="h-px w-10 bg-[#031d35]/50" />
           </div>
-          <div className="relative overflow-hidden rounded-2xl bg-bone/20 py-6 border border-black/5">
-            <div className="logo-scroll flex items-center gap-12 whitespace-nowrap">
-              {[...institutions, ...institutions].map((inst, i) => (
-                <div
-                  key={i}
-                  className="flex shrink-0 items-center justify-center h-12"
-                >
-                  {inst.logo ? (
-                    <img
-                      src={inst.logo}
-                      alt={inst.name}
-                      className="h-10 md:h-12 w-auto max-w-[120px] object-contain"
+          <div className="carousel-track relative overflow-hidden py-6">
+            {/* central rail */}
+            <div className="pointer-events-none absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-[#031d35]/30 to-transparent" />
+            <div className="logo-scroll relative flex items-center gap-10 md:gap-14 whitespace-nowrap">
+              {[...institutions, ...institutions].map((inst, i) => {
+                const up = i % 2 === 0;
+                return (
+                  <div
+                    key={i}
+                    className="group relative shrink-0"
+                    style={{ transform: `translateY(${up ? "-14px" : "14px"})` }}
+                  >
+                    {/* tether dot on the rail */}
+                    <span
+                      className="pointer-events-none absolute left-1/2 -translate-x-1/2 h-2 w-2 rounded-full bg-[#031d35] ring-4 ring-background"
+                      style={{ [up ? "bottom" : "top"]: "-22px" } as React.CSSProperties}
                     />
-                  ) : (
-                    <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-ink/50 font-medium px-3">
-                      {inst.name}
-                    </span>
-                  )}
-                </div>
-              ))}
+                    <div className="flex h-24 w-[190px] md:h-28 md:w-[220px] items-center justify-center rounded-2xl bg-background px-5 shadow-[0_1px_0_rgba(0,0,0,0.04),0_18px_40px_-28px_rgba(3,29,53,0.35)] ring-1 ring-[#031d35]/15 transition duration-500 group-hover:ring-[#031d35]/60 group-hover:-translate-y-0.5 group-hover:shadow-[0_24px_50px_-24px_rgba(3,29,53,0.45)]">
+                      {inst.logo ? (
+                        <img
+                          src={inst.logo}
+                          alt={inst.name}
+                          className="h-16 md:h-20 w-auto max-w-full object-contain transition duration-500 group-hover:scale-[1.05]"
+                        />
+                      ) : (
+                        <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink/70 font-medium">
+                          {inst.name}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
 
-        {/* Incubator logos carousel */}
-        <div className="mt-8">
-          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground text-center mb-6">
-            Shortlisted for pitching to 8+ incubators
+        {/* Incubator logos — gold rail, reverse */}
+        <div className="mt-14">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <span className="h-px w-10 bg-copper/60" />
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-copper">
+              Shortlisted for 8+ incubators
+            </span>
+            <span className="h-px w-10 bg-copper/60" />
           </div>
-          <div className="relative overflow-hidden rounded-2xl bg-bone/20 py-6 border border-black/5">
-            <div className="logo-scroll flex items-center gap-12 whitespace-nowrap" style={{ animationDirection: "reverse", animationDuration: "24s" }}>
-              {[...incubators, ...incubators, ...incubators].map((inc, i) => (
-                <div
-                  key={i}
-                  className="flex shrink-0 items-center justify-center h-12"
-                >
-                  <img
-                    src={inc.logo}
-                    alt={inc.name}
-                    className="h-10 md:h-12 w-auto max-w-[120px] object-contain"
-                  />
-                </div>
-              ))}
+          <div className="carousel-track relative overflow-hidden py-6">
+            <div className="pointer-events-none absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-copper/40 to-transparent" />
+            <div className="logo-scroll relative flex items-center gap-10 md:gap-14 whitespace-nowrap" style={{ animationDirection: "reverse", animationDuration: "45s" }}>
+              {[...incubators, ...incubators, ...incubators].map((inc, i) => {
+                const up = i % 2 === 0;
+                return (
+                  <div
+                    key={i}
+                    className="group relative shrink-0"
+                    style={{ transform: `translateY(${up ? "-14px" : "14px"})` }}
+                  >
+                    <span
+                      className="pointer-events-none absolute left-1/2 -translate-x-1/2 h-2 w-2 rounded-full bg-copper ring-4 ring-background"
+                      style={{ [up ? "bottom" : "top"]: "-22px" } as React.CSSProperties}
+                    />
+                    <div className="flex h-24 w-[190px] md:h-28 md:w-[220px] items-center justify-center rounded-2xl bg-background px-5 shadow-[0_1px_0_rgba(0,0,0,0.04),0_18px_40px_-28px_rgba(155,100,30,0.35)] ring-1 ring-copper/20 transition duration-500 group-hover:ring-copper/70 group-hover:-translate-y-0.5 group-hover:shadow-[0_24px_50px_-24px_rgba(155,100,30,0.45)]">
+                      <img
+                        src={inc.logo}
+                        alt={inc.name}
+                        className="h-16 md:h-20 w-auto max-w-full object-contain transition duration-500 group-hover:scale-[1.05]"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -962,7 +994,7 @@ function Team() {
         <SectionLabel n="12" label="The Team" />
         <Reveal>
           <h2 className="mx-auto mt-6 max-w-3xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-[1.1]">
-            Founded and built by two undergraduate students at <span className="text-[#5E1930]">SRCC, University of Delhi.</span>
+            Founded and built by two undergraduate students at <span className="text-[#031d35]">SRCC, University of Delhi.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.08}>
@@ -980,7 +1012,7 @@ function Team() {
               </div>
               <p className="text-xs md:text-sm text-muted-foreground leading-relaxed max-w-md mx-auto md:mx-0">{t.scope}</p>
               <div className="flex flex-col gap-1 text-xs md:text-sm pt-4 border-t border-black/5 max-w-md mx-auto md:mx-0">
-                <a href={`mailto:${t.email}`} className="text-[#5E1930] hover:underline font-medium">{t.email}</a>
+                <a href={`mailto:${t.email}`} className="text-[#031d35] hover:underline font-medium">{t.email}</a>
                 <span className="text-muted-foreground">{t.phone}</span>
               </div>
             </Reveal>
@@ -1012,13 +1044,13 @@ function CTA() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href="mailto:sinhaayush643@gmail.com"
-            className="rounded-full bg-[#5E1930] hover:bg-[#4E1428] px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(94,25,48,0.3)] flex items-center justify-center h-12"
+            className="rounded-full bg-[#031d35] hover:bg-[#052a4c] px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-[0_12px_30px_rgba(3,29,53,0.3)] flex items-center justify-center h-12"
           >
             Partner with Stitch Zero
           </a>
           <a
             href="#solution"
-            className="rounded-full border border-black/10 bg-white px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink transition hover:border-[#5E1930]/30 hover:shadow-sm flex items-center justify-center h-12"
+            className="rounded-full border border-black/10 bg-white px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink transition hover:border-[#031d35]/30 hover:shadow-sm flex items-center justify-center h-12"
           >
             Explore the Material Platform
           </a>
@@ -1027,12 +1059,12 @@ function CTA() {
         <div className="mt-16 grid gap-8 md:grid-cols-2 max-w-2xl mx-auto border-t border-black/5 pt-12 text-center md:text-left">
           <div className="space-y-1">
             <h4 className="font-display text-lg md:text-xl text-ink font-bold">Ayush Sinha</h4>
-            <a href="mailto:sinhaayush643@gmail.com" className="block text-sm text-[#5E1930] hover:underline">sinhaayush643@gmail.com</a>
+            <a href="mailto:sinhaayush643@gmail.com" className="block text-sm text-[#031d35] hover:underline">sinhaayush643@gmail.com</a>
             <div className="text-xs md:text-sm text-muted-foreground">+91 9318355472</div>
           </div>
           <div className="space-y-1 border-t border-black/5 pt-8 md:border-t-0 md:pt-0 md:border-l md:pl-12 border-black/5">
             <h4 className="font-display text-lg md:text-xl text-ink font-bold">Hemavarshini S</h4>
-            <a href="mailto:varshinishema@gmail.com" className="block text-sm text-[#5E1930] hover:underline">varshinishema@gmail.com</a>
+            <a href="mailto:varshinishema@gmail.com" className="block text-sm text-[#031d35] hover:underline">varshinishema@gmail.com</a>
             <div className="text-xs md:text-sm text-muted-foreground">+91 9789777125</div>
           </div>
         </div>
@@ -1053,9 +1085,9 @@ function Footer() {
           © {new Date().getFullYear()} Stitch Zero. Circular Materials Company.
         </div>
         <div className="flex gap-6 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          <a href="mailto:hello@stitchzero.com" className="hover:text-[#5E1930] transition-colors">Contact</a>
-          <a href="#solution" className="hover:text-[#5E1930] transition-colors">Platform</a>
-          <a href="#team" className="hover:text-[#5E1930] transition-colors">Team</a>
+          <a href="mailto:hello@stitchzero.com" className="hover:text-[#031d35] transition-colors">Contact</a>
+          <a href="#solution" className="hover:text-[#031d35] transition-colors">Platform</a>
+          <a href="#team" className="hover:text-[#031d35] transition-colors">Team</a>
         </div>
       </div>
     </footer>
@@ -1089,7 +1121,7 @@ function Counter({ to, suffix = "", prefix = "" }: { to: number; suffix?: string
 export default function Landing() {
   const [loading, setLoading] = useState(true);
   return (
-    <main className="relative min-h-screen bg-white text-foreground selection:bg-[#5E1930] selection:text-white">
+    <main className="relative min-h-screen bg-white text-foreground selection:bg-[#031d35] selection:text-white">
       <AnimatePresence>
         {loading && <Loader key="loader" onDone={() => setLoading(false)} />}
       </AnimatePresence>
