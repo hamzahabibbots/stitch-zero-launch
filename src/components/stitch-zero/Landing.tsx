@@ -25,6 +25,12 @@ import logoRamjas from "@/assets/logos/ramjas-college.webp";
 import logoBITS from "@/assets/logos/bits-pilani.webp";
 import logoIIMLucknow from "@/assets/logos/iim-lucknow.webp";
 
+// SDG logos
+import sdg6 from "@/assets/sdg/sdg-6.jpg";
+import sdg8 from "@/assets/sdg/sdg-8.jpg";
+import sdg12 from "@/assets/sdg/sdg-12.jpg";
+import sdg13 from "@/assets/sdg/sdg-13.jpg";
+
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /* -------- Reveal: scroll-triggered fade/slide, reduced-motion aware -------- */
@@ -726,10 +732,10 @@ function Impact() {
 /* -------- UN SDGs -------- */
 function SDGs() {
   const goals = [
-    { n: 6, title: "Clean Water & Sanitation", color: "#26BDE2", desc: "Reducing the water pollution and contamination linked to textile waste dumping and burning." },
-    { n: 8, title: "Decent Work & Growth", color: "#A21942", desc: "Building a manufacturing model that supports local jobs and circular supply chains." },
-    { n: 12, title: "Responsible Consumption", color: "#BF8B2E", desc: "Turning discarded textile waste into a valuable industrial input instead of landfill or ash." },
-    { n: 13, title: "Climate Action", color: "#3F7E44", desc: "Reducing emissions associated with virgin plastic production and textile waste incineration." },
+    { n: 6, title: "Clean Water & Sanitation", color: "#26BDE2", desc: "Reducing the water pollution and contamination linked to textile waste dumping and burning.", logo: sdg6 },
+    { n: 8, title: "Decent Work & Growth", color: "#A21942", desc: "Building a manufacturing model that supports local jobs and circular supply chains.", logo: sdg8 },
+    { n: 12, title: "Responsible Consumption", color: "#BF8B2E", desc: "Turning discarded textile waste into a valuable industrial input instead of landfill or ash.", logo: sdg12 },
+    { n: 13, title: "Climate Action", color: "#3F7E44", desc: "Reducing emissions associated with virgin plastic production and textile waste incineration.", logo: sdg13 },
   ];
   return (
     <section className="relative py-20 md:py-28 bg-white">
@@ -742,16 +748,13 @@ function SDGs() {
         </Reveal>
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {goals.map((g, i) => (
-            <Reveal key={i} delay={i * 0.1} y={20} className="group flex flex-col border-t border-black/10 pt-6 space-y-3 transition-colors duration-300 hover:border-[#5E1930]/40">
-              <div className="flex items-center gap-3">
-                <span
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-display text-base text-white font-bold transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundColor: g.color }}
-                >
-                  {g.n}
-                </span>
-                <span className="font-display text-sm text-ink font-semibold leading-tight">{g.title}</span>
-              </div>
+            <Reveal key={i} delay={i * 0.1} y={20} className="group flex flex-col border-t border-black/10 pt-6 space-y-4 transition-colors duration-300 hover:border-[#5E1930]/40">
+              <img
+                src={g.logo}
+                alt={`SDG ${g.n}: ${g.title}`}
+                className="w-20 h-20 rounded-xl object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <span className="font-display text-sm text-ink font-semibold leading-tight">{g.title}</span>
               <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{g.desc}</p>
             </Reveal>
           ))}
