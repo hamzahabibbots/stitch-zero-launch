@@ -807,11 +807,28 @@ function Roadmap() {
 
 /* -------- Recognition -------- */
 function Recognition() {
-  const institutions = [
-    "SIIB", "IIT Delhi", "CCI", "IIM Lucknow", "TETR", "MDI",
-    "Sharda University", "IIM Calcutta", "IIM Bangalore", "IIT Roorkee",
-    "IIT Madras", "SSCBS", "IIT Patna", "IIT Guwahati", "IIIT Kanpur",
-    "IIT Kharagpur", "Ramjas College", "BITS Pilani", "IIIT Delhi", "Katha VC",
+  // Institution logos
+  const institutions: { name: string; logo?: string }[] = [
+    { name: "SIIB" },
+    { name: "IIT Delhi", logo: new URL("../../assets/logos/iit-delhi.webp", import.meta.url).href },
+    { name: "CCI", logo: new URL("../../assets/logos/cci.webp", import.meta.url).href },
+    { name: "IIM Lucknow" },
+    { name: "TETR", logo: new URL("../../assets/logos/tetr.webp", import.meta.url).href },
+    { name: "MDI", logo: new URL("../../assets/logos/mdi.webp", import.meta.url).href },
+    { name: "Sharda University", logo: new URL("../../assets/logos/sharda-university.webp", import.meta.url).href },
+    { name: "IIM Calcutta", logo: new URL("../../assets/logos/iim-calcutta.webp", import.meta.url).href },
+    { name: "IIM Bangalore", logo: new URL("../../assets/logos/iim-bangalore.webp", import.meta.url).href },
+    { name: "IIT Roorkee", logo: new URL("../../assets/logos/iit-roorkee.webp", import.meta.url).href },
+    { name: "IIT Madras", logo: new URL("../../assets/logos/iit-madras.webp", import.meta.url).href },
+    { name: "SSCBS", logo: new URL("../../assets/logos/sscbs.webp", import.meta.url).href },
+    { name: "IIT Patna", logo: new URL("../../assets/logos/iit-patna.webp", import.meta.url).href },
+    { name: "IIT Guwahati", logo: new URL("../../assets/logos/iit-guwahati.webp", import.meta.url).href },
+    { name: "IIT Kanpur", logo: new URL("../../assets/logos/iit-kanpur.webp", import.meta.url).href },
+    { name: "IIT Kharagpur", logo: new URL("../../assets/logos/iit-kharagpur.webp", import.meta.url).href },
+    { name: "Ramjas College", logo: new URL("../../assets/logos/ramjas-college.webp", import.meta.url).href },
+    { name: "BITS Pilani", logo: new URL("../../assets/logos/bits-pilani.webp", import.meta.url).href },
+    { name: "IIIT Delhi" },
+    { name: "Katha VC" },
   ];
   const incubators = [
     "Waiganga", "NSRCEL", "Freeflow Ventures", "Balavikasa",
@@ -847,15 +864,24 @@ function Recognition() {
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground text-center mb-6">
             Recognised at 25+ platforms across
           </div>
-          <div className="relative overflow-hidden rounded-2xl bg-bone/20 py-4 border border-black/5">
-            <div className="logo-scroll flex gap-8 whitespace-nowrap">
-              {[...institutions, ...institutions].map((name, i) => (
+          <div className="relative overflow-hidden rounded-2xl bg-bone/20 py-6 border border-black/5">
+            <div className="logo-scroll flex items-center gap-12 whitespace-nowrap">
+              {[...institutions, ...institutions].map((inst, i) => (
                 <div
                   key={i}
-                  className="flex shrink-0 items-center gap-2 rounded-full bg-white border border-black/5 px-5 py-2 font-mono text-[9px] uppercase tracking-[0.1em] text-ink shadow-[0_1px_3px_rgba(0,0,0,0.01)]"
+                  className="flex shrink-0 items-center justify-center h-12"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-copper/70" />
-                  {name}
+                  {inst.logo ? (
+                    <img
+                      src={inst.logo}
+                      alt={inst.name}
+                      className="h-10 md:h-12 w-auto max-w-[120px] object-contain opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                    />
+                  ) : (
+                    <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-ink/50 font-medium px-3">
+                      {inst.name}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
