@@ -31,6 +31,15 @@ import sdg8 from "@/assets/sdg/sdg-8.jpg";
 import sdg12 from "@/assets/sdg/sdg-12.jpg";
 import sdg13 from "@/assets/sdg/sdg-13.jpg";
 
+// Incubator logos
+import incWainganga from "@/assets/incubators/wainganga.webp";
+import incNSRCEL from "@/assets/incubators/nsrcel.webp";
+import incFreeflow from "@/assets/incubators/freeflow.webp";
+import incBalavikasa from "@/assets/incubators/balavikasa.webp";
+import incStartupvisors from "@/assets/incubators/startupvisors.webp";
+import incTrecStep from "@/assets/incubators/trecstep.png";
+import incAmetCeii from "@/assets/incubators/amet-ceii.png";
+
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /* -------- Reveal: scroll-triggered fade/slide, reduced-motion aware -------- */
@@ -852,8 +861,13 @@ function Recognition() {
     { name: "Katha VC" },
   ];
   const incubators = [
-    "Waiganga", "NSRCEL", "Freeflow Ventures", "Balavikasa",
-    "Startupvisors", "Trec Step", "Amet Ceii",
+    { name: "Waiganga", logo: incWainganga },
+    { name: "NSRCEL", logo: incNSRCEL },
+    { name: "Freeflow Ventures", logo: incFreeflow },
+    { name: "Balavikasa", logo: incBalavikasa },
+    { name: "Startupvisors", logo: incStartupvisors },
+    { name: "Trec Step", logo: incTrecStep },
+    { name: "Amet Ceii", logo: incAmetCeii },
   ];
   const highlights = [
     { t: "25+ National & International Recognitions", s: "Across premier IITs and IIMs" },
@@ -914,15 +928,18 @@ function Recognition() {
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground text-center mb-6">
             Shortlisted for pitching to 8+ incubators
           </div>
-          <div className="relative overflow-hidden rounded-2xl bg-bone/20 py-4 border border-black/5">
-            <div className="logo-scroll flex gap-8 whitespace-nowrap" style={{ animationDirection: "reverse", animationDuration: "24s" }}>
-              {[...incubators, ...incubators, ...incubators].map((name, i) => (
+          <div className="relative overflow-hidden rounded-2xl bg-bone/20 py-6 border border-black/5">
+            <div className="logo-scroll flex items-center gap-12 whitespace-nowrap" style={{ animationDirection: "reverse", animationDuration: "24s" }}>
+              {[...incubators, ...incubators, ...incubators].map((inc, i) => (
                 <div
                   key={i}
-                  className="flex shrink-0 items-center gap-2 rounded-full bg-white border border-[#5E1930]/15 px-5 py-2 font-mono text-[9px] uppercase tracking-[0.1em] text-[#5E1930] shadow-[0_1px_3px_rgba(0,0,0,0.01)]"
+                  className="flex shrink-0 items-center justify-center h-12"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#5E1930]/80" />
-                  {name}
+                  <img
+                    src={inc.logo}
+                    alt={inc.name}
+                    className="h-10 md:h-12 w-auto max-w-[120px] object-contain"
+                  />
                 </div>
               ))}
             </div>
