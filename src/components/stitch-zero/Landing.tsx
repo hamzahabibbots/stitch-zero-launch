@@ -6,6 +6,24 @@ import wasteImg from "@/assets/waste.jpg";
 import materialImg from "@/assets/material.jpg";
 import plasticImg from "@/assets/plastic.jpg";
 
+// Institution logos
+import logoIITDelhi from "@/assets/logos/iit-delhi.webp";
+import logoCCI from "@/assets/logos/cci.webp";
+import logoTETR from "@/assets/logos/tetr.webp";
+import logoMDI from "@/assets/logos/mdi.webp";
+import logoSharda from "@/assets/logos/sharda-university.webp";
+import logoIIMCalcutta from "@/assets/logos/iim-calcutta.webp";
+import logoIIMBangalore from "@/assets/logos/iim-bangalore.webp";
+import logoIITRoorkee from "@/assets/logos/iit-roorkee.webp";
+import logoIITMadras from "@/assets/logos/iit-madras.webp";
+import logoSSCBS from "@/assets/logos/sscbs.webp";
+import logoIITPatna from "@/assets/logos/iit-patna.webp";
+import logoIITGuwahati from "@/assets/logos/iit-guwahati.webp";
+import logoIITKanpur from "@/assets/logos/iit-kanpur.webp";
+import logoIITKharagpur from "@/assets/logos/iit-kharagpur.webp";
+import logoRamjas from "@/assets/logos/ramjas-college.webp";
+import logoBITS from "@/assets/logos/bits-pilani.webp";
+
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /* -------- Reveal: scroll-triggered fade/slide, reduced-motion aware -------- */
@@ -807,26 +825,25 @@ function Roadmap() {
 
 /* -------- Recognition -------- */
 function Recognition() {
-  // Institution logos
   const institutions: { name: string; logo?: string }[] = [
     { name: "SIIB" },
-    { name: "IIT Delhi", logo: new URL("../../assets/logos/iit-delhi.webp", import.meta.url).href },
-    { name: "CCI", logo: new URL("../../assets/logos/cci.webp", import.meta.url).href },
+    { name: "IIT Delhi", logo: logoIITDelhi },
+    { name: "CCI", logo: logoCCI },
     { name: "IIM Lucknow" },
-    { name: "TETR", logo: new URL("../../assets/logos/tetr.webp", import.meta.url).href },
-    { name: "MDI", logo: new URL("../../assets/logos/mdi.webp", import.meta.url).href },
-    { name: "Sharda University", logo: new URL("../../assets/logos/sharda-university.webp", import.meta.url).href },
-    { name: "IIM Calcutta", logo: new URL("../../assets/logos/iim-calcutta.webp", import.meta.url).href },
-    { name: "IIM Bangalore", logo: new URL("../../assets/logos/iim-bangalore.webp", import.meta.url).href },
-    { name: "IIT Roorkee", logo: new URL("../../assets/logos/iit-roorkee.webp", import.meta.url).href },
-    { name: "IIT Madras", logo: new URL("../../assets/logos/iit-madras.webp", import.meta.url).href },
-    { name: "SSCBS", logo: new URL("../../assets/logos/sscbs.webp", import.meta.url).href },
-    { name: "IIT Patna", logo: new URL("../../assets/logos/iit-patna.webp", import.meta.url).href },
-    { name: "IIT Guwahati", logo: new URL("../../assets/logos/iit-guwahati.webp", import.meta.url).href },
-    { name: "IIT Kanpur", logo: new URL("../../assets/logos/iit-kanpur.webp", import.meta.url).href },
-    { name: "IIT Kharagpur", logo: new URL("../../assets/logos/iit-kharagpur.webp", import.meta.url).href },
-    { name: "Ramjas College", logo: new URL("../../assets/logos/ramjas-college.webp", import.meta.url).href },
-    { name: "BITS Pilani", logo: new URL("../../assets/logos/bits-pilani.webp", import.meta.url).href },
+    { name: "TETR", logo: logoTETR },
+    { name: "MDI", logo: logoMDI },
+    { name: "Sharda University", logo: logoSharda },
+    { name: "IIM Calcutta", logo: logoIIMCalcutta },
+    { name: "IIM Bangalore", logo: logoIIMBangalore },
+    { name: "IIT Roorkee", logo: logoIITRoorkee },
+    { name: "IIT Madras", logo: logoIITMadras },
+    { name: "SSCBS", logo: logoSSCBS },
+    { name: "IIT Patna", logo: logoIITPatna },
+    { name: "IIT Guwahati", logo: logoIITGuwahati },
+    { name: "IIT Kanpur", logo: logoIITKanpur },
+    { name: "IIT Kharagpur", logo: logoIITKharagpur },
+    { name: "Ramjas College", logo: logoRamjas },
+    { name: "BITS Pilani", logo: logoBITS },
     { name: "IIIT Delhi" },
     { name: "Katha VC" },
   ];
