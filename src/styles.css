@@ -238,6 +238,34 @@
   background: oklch(0.985 0.003 80);
 }
 
+/* Card lift micro-interaction */
+@utility lift {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.28);
+  }
+}
+
+/* Animated rule that draws itself in on reveal */
+@keyframes rule-draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Respect reduced-motion: neutralize ambient + entrance motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Premium Navigation Hover Underline Effect */
 @utility nav-link {
   position: relative;

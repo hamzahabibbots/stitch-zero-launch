@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import heroImg from "@/assets/hero-mannequin.jpg";
@@ -7,6 +7,37 @@ import materialImg from "@/assets/material.jpg";
 import plasticImg from "@/assets/plastic.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+/* -------- Reveal: scroll-triggered fade/slide, reduced-motion aware -------- */
+function Reveal({
+  children,
+  className,
+  delay = 0,
+  y = 26,
+  x = 0,
+  once = true,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  y?: number;
+  x?: number;
+  once?: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once, margin: "-12%" });
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y, x }}
+      animate={inView ? { opacity: 1, y: 0, x: 0 } : {}}
+      transition={{ duration: 0.7, ease: EASE, delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 /* -------- Loader -------- */
 function Loader({ onDone }: { onDone: () => void }) {
@@ -223,12 +254,25 @@ function Marquee() {
 
 /* -------- Section label helper -------- */
 function SectionLabel({ n, label }: { n: string; label: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-12%" });
   return (
-    <div className="flex items-center justify-center gap-4 font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-muted-foreground md:justify-start">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 12 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: EASE }}
+      className="flex items-center justify-center gap-4 font-mono text-xs md:text-sm uppercase tracking-[0.25em] text-muted-foreground md:justify-start"
+    >
       <span className="text-[#5E1930] font-bold">{n}</span>
-      <span className="hairline w-12" />
+      <motion.span
+        className="hairline w-12 origin-left"
+        initial={{ scaleX: 0 }}
+        animate={inView ? { scaleX: 1 } : {}}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}
+      />
       <span className="font-semibold">{label}</span>
-    </div>
+    </motion.div>
   );
 }
 
@@ -272,9 +316,9 @@ function Problem() {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-              className="aspect-[4/3] overflow-hidden rounded-2xl bg-bone/30 w-full"
+              className="group aspect-[4/3] overflow-hidden rounded-2xl bg-bone/30 w-full"
             >
-              <img src={wasteImg} alt="Textile waste piled up" className="h-full w-full object-cover" />
+              <img src={wasteImg} alt="Textile waste piled up" className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]" />
             </motion.div>
           </div>
 
@@ -284,9 +328,9 @@ function Problem() {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-              className="aspect-[4/3] overflow-hidden rounded-2xl bg-bone/30 w-full lg:order-1 order-2"
+              className="group aspect-[4/3] overflow-hidden rounded-2xl bg-bone/30 w-full lg:order-1 order-2"
             >
-              <img src={plasticImg} alt="Mannequin display fixtures" className="h-full w-full object-cover" />
+              <img src={plasticImg} alt="Mannequin display fixtures" className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]" />
             </motion.div>
             
             <motion.div
@@ -334,30 +378,36 @@ function Solution() {
     <section id="solution" className="relative py-20 md:py-28 section-alt">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="02" label="Our Solution" />
-        <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-[1.1] text-balance">
-          We turn one industry's waste into another's <span className="text-copper">infrastructure.</span>
-        </h2>
-        
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-[1.1] text-balance">
+            We turn one industry's waste into another's <span className="text-copper">infrastructure.</span>
+          </h2>
+        </Reveal>
+
         <div className="grid gap-12 lg:grid-cols-2 mt-16 items-center">
           <div className="space-y-6">
-            <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-              Stitch Zero converts discarded textile waste into a proprietary biodegradable composite material, engineered to replace plastic across multiple applications.
-            </p>
+            <Reveal>
+              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                Stitch Zero converts discarded textile waste into a proprietary biodegradable composite material, engineered to replace plastic across multiple applications.
+              </p>
+            </Reveal>
             <div className="border-t border-black/5 pt-8 space-y-6">
               {steps.map((s, i) => (
-                <div key={i} className="flex gap-6 items-start">
-                  <span className="font-mono text-xs font-bold text-[#5E1930] w-6 shrink-0 mt-1">0{i+1}</span>
-                  <div>
-                    <h4 className="font-display text-lg text-ink font-semibold">{s.k}</h4>
-                    <p className="text-muted-foreground text-xs md:text-sm mt-1 leading-relaxed">{s.v}</p>
+                <Reveal key={i} x={-24} y={0} delay={i * 0.1}>
+                  <div className="group flex gap-6 items-start">
+                    <span className="font-mono text-xs font-bold text-[#5E1930] w-6 shrink-0 mt-1 tabular-nums transition-colors group-hover:text-copper">0{i+1}</span>
+                    <div>
+                      <h4 className="font-display text-lg text-ink font-semibold">{s.k}</h4>
+                      <p className="text-muted-foreground text-xs md:text-sm mt-1 leading-relaxed">{s.v}</p>
+                    </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
-          <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-bone/35 max-h-[560px] w-full">
-            <img src={materialImg} alt="Biodegradable composite material production" className="h-full w-full object-cover" />
-          </div>
+          <Reveal x={30} y={0} delay={0.1} className="aspect-[4/5] rounded-3xl overflow-hidden bg-bone/35 max-h-[560px] w-full">
+            <img src={materialImg} alt="Biodegradable composite material production" className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out hover:scale-105" />
+          </Reveal>
         </div>
       </div>
     </section>
@@ -409,7 +459,7 @@ function FirstProduct() {
             transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
             className="relative mx-auto aspect-[3/4] w-full max-w-[440px] overflow-hidden rounded-2xl bg-bone/30"
           >
-            <img src={heroImg} alt="Biodegradable mannequin" className="h-full w-full object-cover" loading="lazy" />
+            <img src={heroImg} alt="Biodegradable mannequin" className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out hover:scale-105" loading="lazy" />
           </motion.div>
         </div>
       </div>
@@ -497,10 +547,12 @@ function Compare() {
     <section className="relative py-20 md:py-28 bg-white">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="05" label="Why We're Different" />
-        <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-          Tackling textile waste and plastic dependency as <span className="text-copper font-light italic">one unified problem.</span>
-        </h2>
-        
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
+            Tackling textile waste and plastic dependency as <span className="text-copper font-light italic">one unified problem.</span>
+          </h2>
+        </Reveal>
+
         <div className="mt-16 border-t border-black/10 overflow-x-auto">
           <table className="w-full text-left min-w-[700px] border-collapse">
             <thead>
@@ -512,14 +564,21 @@ function Compare() {
             </thead>
             <tbody>
               {rows.map((row, i) => (
-                <tr key={i} className="border-b border-black/5 hover:bg-bone/5 transition-colors">
-                  <td className="py-6 font-display text-base md:text-lg text-ink pr-6 font-medium">{row.name}</td>
-                  <td className="py-6 text-xs md:text-sm text-muted-foreground leading-relaxed pr-6 line-through decoration-copper/20">{row.traditional}</td>
-                  <td className="py-6 text-xs md:text-sm text-foreground leading-relaxed font-medium pl-3 border-l border-[#5E1930]/10 bg-[#5E1930]/[0.01]">
+                <motion.tr
+                  key={i}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
+                  className="border-b border-black/5 hover:bg-bone/5 transition-colors"
+                >
+                  <td className="py-6 font-display text-base md:text-lg text-ink pr-6 font-medium align-top">{row.name}</td>
+                  <td className="py-6 text-xs md:text-sm text-muted-foreground leading-relaxed pr-6 line-through decoration-copper/20 align-top">{row.traditional}</td>
+                  <td className="py-6 text-xs md:text-sm text-foreground leading-relaxed font-medium pl-3 border-l border-[#5E1930]/10 bg-[#5E1930]/[0.01] align-top">
                     <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#5E1930] mr-2 align-middle" />
                     {row.zero}
                   </td>
-                </tr>
+                </motion.tr>
               ))}
             </tbody>
           </table>
@@ -540,19 +599,21 @@ function Market() {
     <section id="impact" className="relative py-20 md:py-28 section-alt">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="06" label="Market Opportunity" />
-        <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-          Accelerating demand in a <span className="text-copper">multi-billion dollar market.</span>
-        </h2>
-        
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
+            Accelerating demand in a <span className="text-copper">multi-billion dollar market.</span>
+          </h2>
+        </Reveal>
+
         <div className="mt-16 grid gap-12 md:grid-cols-3">
           {items.map((it, i) => (
-            <div key={i} className="space-y-3 md:text-left text-center">
+            <Reveal key={i} delay={i * 0.12} className="space-y-3 md:text-left text-center md:border-l md:border-black/5 md:pl-6 md:first:border-l-0 md:first:pl-0">
               <div className="font-display text-[clamp(3rem,6vw,4.5rem)] leading-none text-ink">
                 <Counter to={it.n} prefix={it.prefix} />
                 <span className="text-copper text-2xl md:text-3xl ml-1">{it.s}</span>
               </div>
               <div className="mx-auto max-w-xs text-xs md:text-sm text-muted-foreground md:mx-0 leading-relaxed">{it.label}</div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -572,19 +633,21 @@ function BeyondMannequins() {
     <section className="relative py-20 md:py-28 bg-white">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="07" label="Beyond Mannequins" />
-        <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-          This innovation can take <span className="text-copper">more forms</span> than mannequins.
-        </h2>
-        
-        <div className="mt-16 grid gap-x-12 gap-y-12 sm:grid-cols-2">
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
+            This innovation can take <span className="text-copper">more forms</span> than mannequins.
+          </h2>
+        </Reveal>
+
+        <div className="mt-16 grid gap-x-12 gap-y-10 sm:grid-cols-2">
           {applications.map((app, i) => (
-            <div key={i} className="flex gap-6 items-start border-t border-black/5 pt-6">
-              <span className="text-3xl shrink-0 filter grayscale opacity-90">{app.icon}</span>
+            <Reveal key={i} delay={(i % 2) * 0.1} y={20} className="group flex gap-6 items-start border-t border-black/5 pt-6 transition-colors duration-300 hover:border-copper/40">
+              <span className="text-3xl shrink-0 filter grayscale opacity-90 transition-transform duration-300 group-hover:scale-110 group-hover:opacity-100">{app.icon}</span>
               <div className="space-y-2">
                 <h3 className="font-display text-lg text-ink font-semibold">{app.title}</h3>
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{app.desc}</p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -615,13 +678,15 @@ function Impact() {
     <section className="relative py-20 md:py-28 section-alt">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="08" label="Impact" />
-        <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-          Every mannequin cascades into a wider <span className="text-[#5E1930] font-light italic">systemic effect.</span>
-        </h2>
-        
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
+            Every mannequin cascades into a wider <span className="text-[#5E1930] font-light italic">systemic effect.</span>
+          </h2>
+        </Reveal>
+
         <div className="mt-16 grid gap-12 md:grid-cols-3">
           {pillars.map((p, i) => (
-            <div key={i} className={`border-l-2 ${p.border} pl-6 space-y-4`}>
+            <Reveal key={i} delay={i * 0.12} y={22} className={`border-l-2 ${p.border} pl-6 space-y-4`}>
               <h3 className="font-display text-xl text-ink font-bold tracking-tight">{p.title}</h3>
               <ul className="space-y-3">
                 {p.items.map((item, j) => (
@@ -631,7 +696,7 @@ function Impact() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -651,15 +716,17 @@ function SDGs() {
     <section className="relative py-20 md:py-28 bg-white">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="09" label="UN Sustainable Development Goals" />
-        <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-          Aligned with the <span className="text-[#5E1930]">UN Sustainable Development Goals</span>
-        </h2>
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
+            Aligned with the <span className="text-[#5E1930]">UN Sustainable Development Goals</span>
+          </h2>
+        </Reveal>
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {goals.map((g, i) => (
-            <div key={i} className="flex flex-col border-t border-black/10 pt-6 space-y-3">
+            <Reveal key={i} delay={i * 0.1} y={20} className="group flex flex-col border-t border-black/10 pt-6 space-y-3 transition-colors duration-300 hover:border-[#5E1930]/40">
               <div className="flex items-center gap-3">
-                <span 
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-display text-base text-white font-bold"
+                <span
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-display text-base text-white font-bold transition-transform duration-300 group-hover:scale-110"
                   style={{ backgroundColor: g.color }}
                 >
                   {g.n}
@@ -667,7 +734,7 @@ function SDGs() {
                 <span className="font-display text-sm text-ink font-semibold leading-tight">{g.title}</span>
               </div>
               <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{g.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -694,42 +761,44 @@ function Roadmap() {
     <section className="relative py-20 md:py-28 section-alt">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="10" label="Where We Are Today" />
-        <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-          From concept validation into <span className="text-copper">active pilot testing.</span>
-        </h2>
-        
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
+            From concept validation into <span className="text-copper">active pilot testing.</span>
+          </h2>
+        </Reveal>
+
         <div className="mt-16 grid gap-12 lg:grid-cols-2 relative pl-6 lg:pl-0">
           <div className="absolute left-0 lg:left-1/2 top-0 bottom-0 w-[1px] bg-black/10 -translate-x-1/2 hidden lg:block" />
-          
-          <div className="space-y-6 lg:pr-12 text-left">
+
+          <Reveal x={-24} y={0} className="space-y-6 lg:pr-12 text-left">
             <div className="flex items-center gap-3 justify-start">
               <span className="h-2 w-2 rounded-full bg-emerald" />
               <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-emerald font-bold">Completed Phase</h3>
             </div>
             <ul className="space-y-4">
               {completed.map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-xs md:text-sm text-foreground">
+                <Reveal as="li" key={i} delay={0.1 + i * 0.07} y={14} className="flex items-start gap-3 text-xs md:text-sm text-foreground">
                   <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald/10 text-emerald text-[9px] font-bold">✓</span>
                   <span className="text-muted-foreground leading-relaxed">{item}</span>
-                </li>
+                </Reveal>
               ))}
             </ul>
-          </div>
-          
-          <div className="space-y-6 lg:pl-12 text-left">
+          </Reveal>
+
+          <Reveal x={24} y={0} delay={0.1} className="space-y-6 lg:pl-12 text-left">
             <div className="flex items-center gap-3 justify-start">
               <span className="h-2 w-2 rounded-full bg-copper" />
               <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-copper font-bold">Next Phase</h3>
             </div>
             <ul className="space-y-4">
               {next.map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-xs md:text-sm text-foreground">
+                <Reveal as="li" key={i} delay={0.2 + i * 0.07} y={14} className="flex items-start gap-3 text-xs md:text-sm text-foreground">
                   <span className="mt-1.5 flex h-2 w-2 shrink-0 rounded-full bg-copper" />
                   <span className="text-muted-foreground leading-relaxed">{item}</span>
-                </li>
+                </Reveal>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -757,17 +826,19 @@ function Recognition() {
     <section className="relative py-20 md:py-28 bg-white">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="11" label="Recognition" />
-        <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
-          Shortlisted and selected by <span className="text-[#5E1930]">industry leaders.</span>
-        </h2>
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-4xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-tight text-balance">
+            Shortlisted and selected by <span className="text-[#5E1930]">industry leaders.</span>
+          </h2>
+        </Reveal>
 
         {/* Highlights - pure borderless columns aligned to grid */}
         <div className="mt-16 grid gap-8 md:grid-cols-3 border-b border-black/5 pb-12 text-center md:text-left">
           {highlights.map((c, i) => (
-            <div key={i} className="space-y-2">
+            <Reveal key={i} delay={i * 0.1} y={18} className="space-y-2">
               <div className="font-display text-lg text-ink font-bold leading-tight">{c.t}</div>
               <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{c.s}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
 
@@ -825,16 +896,20 @@ function Team() {
     <section id="team" className="relative py-20 md:py-28 section-alt">
       <div className="mx-auto max-w-7xl px-6 md:px-16">
         <SectionLabel n="12" label="The Team" />
-        <h2 className="mx-auto mt-6 max-w-3xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-[1.1]">
-          Founded and built by two undergraduate students at <span className="text-[#5E1930]">SRCC, University of Delhi.</span>
-        </h2>
-        <p className="mx-auto mt-4 max-w-3xl text-center text-muted-foreground md:mx-0 md:text-left leading-relaxed text-sm md:text-base">
-          Between them, they lead the company's business strategy, partnerships, and fundraising alongside material innovation, product development, and manufacturing optimization. Stitch Zero has earned over INR 1 lakh through grants, prizes, and early product deployment, proving the market pays for what we build. We scale by outsourcing collection and transformation to trusted aggregators while deepening relationships with major fashion display and visual merchandising brands.
-        </p>
-        
-        <div className="mt-16 grid gap-12 md:grid-cols-2 border-t border-black/10 pt-12">
+        <Reveal>
+          <h2 className="mx-auto mt-6 max-w-3xl text-center font-display md:mx-0 md:text-left text-[clamp(2.2rem,5vw,3.5rem)] text-ink leading-[1.1]">
+            Founded and built by two undergraduate students at <span className="text-[#5E1930]">SRCC, University of Delhi.</span>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p className="mx-auto mt-4 max-w-3xl text-center text-muted-foreground md:mx-0 md:text-left leading-relaxed text-sm md:text-base">
+            Between them, they lead the company's business strategy, partnerships, and fundraising alongside material innovation, product development, and manufacturing optimization. Stitch Zero has earned over INR 1 lakh through grants, prizes, and early product deployment, proving the market pays for what we build. We scale by outsourcing collection and transformation to trusted aggregators while deepening relationships with major fashion display and visual merchandising brands.
+          </p>
+        </Reveal>
+
+        <div className="mt-16 grid gap-8 md:grid-cols-2 border-t border-black/10 pt-12">
           {team.map((t, i) => (
-            <div key={i} className="space-y-4 text-center md:text-left">
+            <Reveal key={i} delay={i * 0.12} y={22} className="group flex flex-col space-y-4 rounded-2xl border border-transparent p-6 -m-6 text-center transition-colors duration-300 hover:border-black/5 md:text-left lift">
               <div className="space-y-1">
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-copper font-medium">{t.r}</span>
                 <h3 className="font-display text-2xl md:text-3xl text-ink font-bold tracking-tight">{t.n}</h3>
@@ -844,7 +919,7 @@ function Team() {
                 <a href={`mailto:${t.email}`} className="text-[#5E1930] hover:underline font-medium">{t.email}</a>
                 <span className="text-muted-foreground">{t.phone}</span>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -858,14 +933,18 @@ function CTA() {
     <section id="contact" className="relative overflow-hidden py-24 md:py-36 bg-white">
       <div className="absolute inset-0 bg-[radial-gradient(50%_60%_at_50%_50%,rgba(94,25,48,0.06),transparent_70%)] pointer-events-none" />
       <div className="relative mx-auto max-w-7xl px-6 md:px-16 text-center">
-        <h2 className="mx-auto max-w-4xl font-display text-[clamp(2.4rem,6vw,4.5rem)] text-ink leading-tight text-balance">
-          The future of manufacturing is <span className="text-shimmer">circular.</span>
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-muted-foreground leading-relaxed text-sm md:text-base">
-          Interested in piloting Stitch Zero mannequins, exploring a partnership,
-          or learning more about our composite technology? Contact us.
-        </p>
-        
+        <Reveal>
+          <h2 className="mx-auto max-w-4xl font-display text-[clamp(2.4rem,6vw,4.5rem)] text-ink leading-tight text-balance">
+            The future of manufacturing is <span className="text-shimmer">circular.</span>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mx-auto mt-6 max-w-2xl text-muted-foreground leading-relaxed text-sm md:text-base">
+            Interested in piloting Stitch Zero mannequins, exploring a partnership,
+            or learning more about our composite technology? Contact us.
+          </p>
+        </Reveal>
+
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href="mailto:sinhaayush643@gmail.com"
