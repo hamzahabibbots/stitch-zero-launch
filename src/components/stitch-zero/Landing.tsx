@@ -23,6 +23,7 @@ import logoIITKanpur from "@/assets/logos/iit-kanpur.webp";
 import logoIITKharagpur from "@/assets/logos/iit-kharagpur.webp";
 import logoRamjas from "@/assets/logos/ramjas-college.webp";
 import logoBITS from "@/assets/logos/bits-pilani.webp";
+import logoIIMLucknow from "@/assets/logos/iim-lucknow.webp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -829,7 +830,7 @@ function Recognition() {
     { name: "SIIB" },
     { name: "IIT Delhi", logo: logoIITDelhi },
     { name: "CCI", logo: logoCCI },
-    { name: "IIM Lucknow" },
+    { name: "IIM Lucknow", logo: logoIIMLucknow },
     { name: "TETR", logo: logoTETR },
     { name: "MDI", logo: logoMDI },
     { name: "Sharda University", logo: logoSharda },
