@@ -610,7 +610,7 @@ function Compare() {
 function Market() {
   const items = [
     { n: 3.15, s: "B USD", label: "Retail and fashion display segment (2024)", prefix: "$" },
-    { n: 6.5, s: "B USD", label: "Projected market size by 2030", prefix: "$" },
+    { n: 6.5, s: "B USD", label: "Projected mannequin market size by 2030", prefix: "$" },
     { n: 7.8, s: "M tonnes", label: "Textile waste generated annually in India", prefix: "" },
   ];
   return (
