@@ -660,7 +660,7 @@ function BeyondMannequins() {
         <div className="mt-16 grid gap-x-12 gap-y-10 sm:grid-cols-2">
           {applications.map((app, i) => (
             <Reveal key={i} delay={(i % 2) * 0.1} y={20} className="group flex gap-6 items-start border-t border-black/5 pt-6 transition-colors duration-300 hover:border-copper/40">
-              <span className="text-3xl shrink-0 filter grayscale opacity-90 transition-transform duration-300 group-hover:scale-110 group-hover:opacity-100">{app.icon}</span>
+              <span className="text-3xl shrink-0 transition-transform duration-300 group-hover:scale-110">{app.icon}</span>
               <div className="space-y-2">
                 <h3 className="font-display text-lg text-ink font-semibold">{app.title}</h3>
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{app.desc}</p>
