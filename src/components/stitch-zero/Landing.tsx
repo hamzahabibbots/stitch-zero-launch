@@ -892,7 +892,7 @@ function Recognition() {
                     <img
                       src={inst.logo}
                       alt={inst.name}
-                      className="h-10 md:h-12 w-auto max-w-[120px] object-contain opacity-75 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                      className="h-10 md:h-12 w-auto max-w-[120px] object-contain"
                     />
                   ) : (
                     <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-ink/50 font-medium px-3">
